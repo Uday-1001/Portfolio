@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uday Raj Kashyap &#8212; AI/ML and GenAI Engineer</title>
+    <meta name="description"
+        content="Portfolio of Uday Raj Kashyap - AI/ML and GenAI Engineer building intelligent systems.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <link rel="stylesheet" href="main.css?v=21">
+</head>
+
+<body>
+    <div id="cursor-glow"></div>
+    <canvas id="particle-canvas"></canvas>
+    <div class="noise"></div>
+
+    <div id="preloader">
+        <div class="pre-inner">
+            <div class="pre-line-wrap"><span class="pre-line">✦ Hang Up..</span></div>
+            <div class="pre-counter"><span id="pre-num">0</span></div>
+            <div class="pre-bar">
+                <div class="pre-fill" id="pre-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="nav">
+        <a href="#hero" class="nav-logo">PortFolio<span>.</span></a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            <span>Available for work</span>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-grid">
+            <div class="hero-col">
+                <div class="hero-title-group" id="hero-title-group">
+                    <div class="hero-badge-tag">
+                        <span class="pulse-spark">✦</span>
+                        <span>GENAI &amp; AI/ML ARCHITECT</span>
+                    </div>
+                    <h1 class="hero-name-main">
+                        <span class="name-block solid-text" data-scramble>UDAY RAJ</span>
+                        <span class="name-block stroke-text" data-scramble>KASHYAP</span>
+                    </h1>
+                    <div class="hero-name-bg-glow"></div>
+                </div>
+                <p class="hero-sub">I architect intelligent systems and generative AI models that solve complex problems
+                    &#8212; turning raw data into powerful, living applications.</p>
+            </div>
+            <div class="hero-photo-wrap" id="hero-photo-wrap">
+                <div class="hero-photo-glow"></div>
+                <div class="hero-photo-ring"></div>
+                <div class="hero-photo">
+                    <img src="https://drive.google.com/thumbnail?id=1uyXRxBzVkrTacGNtDi1zsyg_KJCc2CHn&amp;sz=w1000"
+                        alt="Uday Raj Kashyap">
+                </div>
+                <div class="photo-status-badge">
+                    <span class="badge-dot"></span>
+                    <span>Noida, India</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-cue">
+            <div class="scroll-cue-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <div class="marquee-wrap" id="marquee-wrap">
+        <div class="marquee-track" id="marquee-track">
+            <span>AI/ML &#10022; GENAI &#10022; LANGCHAIN &#10022; RAG SYSTEMS &#10022; PYTHON &#10022; FASTAPI &#10022; COMPETITIVE CODING &#10022; LANGGRAPH &#10022; AGENTIC SYSTEMS &#10022; C++ &#10022; VECTOR DB &#10022; STREAMLIT &#10022; GROQ &#10022; LLAMA &#10022;&nbsp;</span>
+            <span>AI/ML &#10022; GENAI &#10022; LANGCHAIN &#10022; RAG SYSTEMS &#10022; PYTHON &#10022; FASTAPI &#10022; COMPETITIVE CODING &#10022; LANGGRAPH &#10022; AGENTIC SYSTEMS &#10022; C++ &#10022; VECTOR DB &#10022; STREAMLIT &#10022; GROQ &#10022; LLAMA &#10022;&nbsp;</span>
+        </div>
+    </div>
+
+    <section id="about">
+        <div class="container">
+            <div class="label"><span>01</span> About</div>
+            <div class="about-text-reveal" id="about-text">
+                I'm an engineer who doesn't just write code - I build intelligence. With a deep focus on Machine
+                Learning and Generative AI, I bridge the gap between complex algorithms and real-world applications.
+                From training custom models to deploying scalable ML pipelines, my goal is to create systems that learn,
+                adapt, and drive impact.
+            </div>
+            <div class="about-stats">
+                <div class="stat-block">
+                    <div class="stat-num" data-count="850">0</div>
+                    <div class="stat-lbl">LeetCode Solved</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-num" data-count="1860">0</div>
+                    <div class="stat-lbl">Peak LC Rating</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-num" data-count="4">0</div>
+                    <div class="stat-lbl">Certifications</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-num" data-count="1460">0</div>
+                    <div class="stat-lbl">CodeChef Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="work">
+        <div class="container">
+            <div class="label"><span>02</span> Selected Work</div>
+        </div>
+        <div id="stack-outer">
+            <div class="scard" id="scard-0">
+                <div class="scard-inner">
+                    <div class="scard-img">
+                        <img src="https://www.kdnuggets.com/wp-content/uploads/awan_top_7_python_frameworks_ai_agents_1.png"
+                            alt="Research Mind">
+                        <div class="scard-img-overlay"></div>
+                    </div>
+                    <div class="scard-content">
+                        <div class="scard-num">01 / 03</div>
+                        <h3 class="scard-title">Research Mind</h3>
+                        <p class="scard-desc">A 4-agent AI deep research system orchestrating Search, Reader, Writer,
+                            and Critic agents for autonomous web research, synthesis, and report generation with
+                            critique loops.</p>
+                        <div class="scard-tags">
+                            <span>LangChain</span><span>Groq</span><span>Tavily API</span><span>Python</span>
+                            <span>Agent Orchestration</span>
+                        </div>
+                        <a href="https://github.com/Uday-1001/Research-Mind" target="_blank" class="scard-link">View on
+                            GitHub &#8599;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scard" id="scard-1">
+                <div class="scard-inner">
+                    <div class="scard-img">
+                        <img src="https://miro.medium.com/v2/resize:fit:1400/1*SBVIlqAzqoBRrnYB_8Fz0w.png"
+                            alt="CogniSphere">
+                        <div class="scard-img-overlay"></div>
+                    </div>
+                    <div class="scard-content">
+                        <div class="scard-num">02 / 03</div>
+                        <h3 class="scard-title">CogniSphere</h3>
+                        <p class="scard-desc">Multimodal RAG system for natural language querying across documents,
+                            audio, and video using hybrid retrieval combining BM25 sparse and Qdrant dense vector
+                            search.</p>
+                        <div class="scard-tags">
+                            <span>RAG Systems</span>
+                            <span>FastAPI</span><span>LangGraph</span><span>Qdrant</span><span>EasyOCR</span>
+                        </div>
+                        <a href="https://github.com/Uday-1001/CogniSphere" target="_blank" class="scard-link">View on
+                            GitHub &#8599;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scard" id="scard-2">
+                <div class="scard-inner">
+                    <div class="scard-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVoKUvYS--mJgsi_vor8H1hHiVoHzDLr4v4inxQa1Ciw&s=10"
+                            alt="DEJA">
+                        <div class="scard-img-overlay"></div>
+                    </div>
+                    <div class="scard-content">
+                        <div class="scard-num">03 / 03</div>
+                        <h3 class="scard-title">DEJA</h3>
+                        <p class="scard-desc">AI-powered competitive programming mentor that learns from your
+                            already-mastered algorithmic patterns and uses that intuition to guide you through new
+                            problems — like a coach who knows your brain.</p>
+                        <div class="scard-tags">
+                            <span>Streamlit</span>
+                            <span>Python</span><span>LangChain</span><span>Groq</span>
+                            <span>Problem Solving</span>
+                        </div>
+                        <a href="https://github.com/Uday-1001/DEJA" target="_blank" class="scard-link">View on GitHub
+                            &#8599;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="label"><span>03</span> Tech Stack</div>
+            <p class="skills-hint">Hover the nodes to activate :</p>
+        </div>
+        <div class="neural-wrap">
+            <canvas id="neural-canvas"></canvas>
+            <div id="skill-tooltip"></div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="label"><span>04</span> Education &amp; Certifications</div>
+            <div class="exp-list">
+
+                <div class="exp-item gs-reveal">
+                    <div class="exp-dot"></div>
+                    <div class="exp-left">
+                        <span class="exp-date">2023 &#8212; Present</span>
+                        <h3 class="exp-role">B.Tech in Information Technology</h3>
+                    </div>
+                    <div class="exp-right">
+                        <span class="exp-co">JSS Academy of Technical Education, Noida</span>
+                        <p>Focused on Data Structures, Algorithms, OOP, Operating Systems, and DBMS. Current SGPA: 8.6 /
+                            10.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item gs-reveal">
+                    <div class="exp-dot"></div>
+                    <div class="exp-left">
+                        <span class="exp-date">Specializations</span>
+                        <h3 class="exp-role">AI &amp; Cloud Certifications</h3>
+                    </div>
+                    <div class="exp-right">
+                        <span class="exp-co">Industry Recognized Badges</span>
+                        <div class="cert-chips">
+                            <div class="cert-chip">
+                                <span class="cert-icon">✦</span>
+                                <div class="cert-info">
+                                    <strong>Oracle Cloud Infrastructure</strong>
+                                    <span>Certified AI Foundations Associate</span>
+                                </div>
+                            </div>
+                            <div class="cert-chip">
+                                <span class="cert-icon">✦</span>
+                                <div class="cert-info">
+                                    <strong>IBM SkillsBuild</strong>
+                                    <span>Generative AI and Cloud Computing</span>
+                                </div>
+                            </div>
+                            <div class="cert-chip">
+                                <span class="cert-icon">✦</span>
+                                <div class="cert-info">
+                                    <strong>Anthropic</strong>
+                                    <span>Introduction to Model Context Protocol (MCP)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item gs-reveal">
+                    <div class="exp-dot"></div>
+                    <div class="exp-left">
+                        <span class="exp-date">2021 - 2022</span>
+                        <h3 class="exp-role">Senior Secondary</h3>
+                    </div>
+                    <div class="exp-right">
+                        <span class="exp-co">St. Joseph Group Of Institutions</span>
+                        <p>Graduated with 89%. Built strong foundational logic in Physics, Chemistry, and Mathematics.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact-inner">
+            <div class="label"><span>05</span> Get In Touch</div>
+            <h2 class="contact-heading gs-reveal">Have a project?<br><span class="gradient-shimmer">Let's talk.</span>
+            </h2>
+            <a href="mailto:udayofficial104@gmail.com" class="mega-email magnetic"
+                id="mega-email">udayofficial104@gmail.com</a>
+            <div class="contact-row gs-reveal">
+                <a href="https://github.com/Uday-1001" target="_blank" class="social-link magnetic">GitHub
+                    <span>&#8599;</span></a>
+                <a href="https://www.linkedin.com/in/uday-raj-kashyap/" target="_blank"
+                    class="social-link magnetic">LinkedIn <span>&#8599;</span></a>
+                <a href="https://drive.google.com/file/d/1Lm6q7ntRpYue7HtdJ9p1Wt9V8RJYYf9Z/view?usp=drive_link"
+                    target="_blank" class="social-link magnetic">My Resume <span>&#8599;</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-row">
+            <span>&#169; 2026 Uday Raj Kashyap</span>
+            <span>Built with obsession.</span>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            'use strict';
+            gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+            const cvs = document.getElementById('particle-canvas'); const ctx = cvs.getContext('2d');
+            let W, H, particles = [], mouse = { x: -1000, y: -1000 };
+            const PC = 80, CD = 150, MR = 200;
+            function rc() { W = cvs.width = window.innerWidth; H = cvs.height = window.innerHeight; }
+            rc(); window.addEventListener('resize', rc);
+            class P {
+                constructor() { this.x = Math.random() * W; this.y = Math.random() * H; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.r = Math.random() * 2 + 1; }
+                update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > W) this.vx *= -1; if (this.y < 0 || this.y > H) this.vy *= -1; const dx = this.x - mouse.x, dy = this.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy); if (d < MR) { const f = (MR - d) / MR * 0.08; this.vx += dx / d * f; this.vy += dy / d * f; } this.vx *= 0.99; this.vy *= 0.99; }
+                draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(99,102,241,0.5)'; ctx.fill(); }
+            }
+            for (let i = 0; i < PC; i++)particles.push(new P());
+            function ap() {
+                requestAnimationFrame(ap); ctx.clearRect(0, 0, W, H); particles.forEach(p => { p.update(); p.draw(); });
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) { const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, d = Math.sqrt(dx * dx + dy * dy); if (d < CD) { ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = 'rgba(99,102,241,' + (1 - d / CD) * 0.15 + ')'; ctx.lineWidth = 0.5; ctx.stroke(); } }
+                    const dx2 = particles[i].x - mouse.x, dy2 = particles[i].y - mouse.y, d2 = Math.sqrt(dx2 * dx2 + dy2 * dy2); if (d2 < MR) { ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.strokeStyle = 'rgba(34,211,238,' + (1 - d2 / MR) * 0.3 + ')'; ctx.lineWidth = 0.8; ctx.stroke(); }
+                }
+            }
+            ap(); document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+
+            const cg = document.getElementById('cursor-glow'); let cx = 0, cy = 0;
+            function fc() { cx += (mouse.x - cx) * 0.12; cy += (mouse.y - cy) * 0.12; cg.style.transform = 'translate(' + (cx - 150) + 'px,' + (cy - 150) + 'px)'; requestAnimationFrame(fc); } fc();
+
+            const pl = document.getElementById('preloader'), pn = document.getElementById('pre-num'), pf = document.getElementById('pre-fill');
+            let pg = { v: 0 };
+            gsap.to(pg, { v: 100, duration: 2, ease: 'power2.inOut', onUpdate: function () { const v = Math.round(pg.v); pn.textContent = v; pf.style.width = v + '%'; }, onComplete: function () { gsap.timeline().to('.pre-inner', { y: -30, opacity: 0, duration: 0.3, ease: 'power2.in' }).to(pl, { yPercent: -100, duration: 0.7, ease: 'power4.inOut', onComplete: function () { pl.style.display = 'none'; document.body.classList.add('loaded'); heroEntrance(); } }, '-=0.1'); } });
+
+            class TextScramble {
+                constructor(el) { this.el = el; this.chars = '!<>-_\\/[]{}=+*^?#_ABCDEFGHIJKLMNOPQRSTUVWXYZ'; this.frame = 0; this.queue = []; this.resolve = null; }
+                setText(t) { const o = this.el.textContent; const l = Math.max(o.length, t.length); this.queue = []; for (let i = 0; i < l; i++) { const f = o[i] || '', to = t[i] || '', s = Math.floor(Math.random() * 30), e = s + Math.floor(Math.random() * 30); this.queue.push({ from: f, to: to, start: s, end: e }); } cancelAnimationFrame(this.frameRequest); this.frame = 0; return new Promise(r => { this.resolve = r; this.update(); }); }
+                update() { let out = '', c = 0; for (let i = 0; i < this.queue.length; i++) { let { from, to, start, end, char } = this.queue[i]; if (this.frame >= end) { c++; out += to; } else if (this.frame >= start) { if (!char || Math.random() < 0.28) { char = this.chars[Math.floor(Math.random() * this.chars.length)]; this.queue[i].char = char; } out += '<span class="scramble-char">' + char + '</span>'; } else out += from; } this.el.innerHTML = out; if (c === this.queue.length) this.resolve(); else { this.frameRequest = requestAnimationFrame(() => this.update()); this.frame++; } }
+            }
+
+            function heroEntrance() {
+                const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+                tl.from('.hero-tag', { y: 30, opacity: 0, duration: 0.8 })
+                    .from('.hero-photo-wrap', { scale: 0.8, opacity: 0, duration: 1, ease: 'back.out(1.4)' }, '-=0.5')
+                    .add(function () { document.querySelectorAll('[data-scramble]').forEach(function (el) { var fx = new TextScramble(el); fx.setText(el.textContent); }); }, '-=0.6')
+                    .from('.hero-sub', { y: 20, opacity: 0, duration: 0.8 }, '-=0.5')
+                    .from('.hero-btns a', { y: 15, opacity: 0, stagger: 0.1, duration: 0.6 }, '-=0.4')
+                    .from('.scroll-cue', { opacity: 0, duration: 0.5 }, '-=0.2');
+            }
+
+            window.addEventListener('scroll', function () { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 80); }, { passive: true });
+            document.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); var t = document.querySelector(a.getAttribute('href')); if (t) gsap.to(window, { duration: 0.35, scrollTo: { y: t, offsetY: 60 }, ease: 'power2.out' }); }); });
+
+            var aboutEl = document.getElementById('about-text');
+            var wds = aboutEl.textContent.trim().split(/\s+/);
+            aboutEl.innerHTML = wds.map(function (w) { return '<span class="word">' + w + '</span>'; }).join(' ');
+            gsap.set('.word', { opacity: 0.1 });
+            gsap.to('.word', { opacity: 1, stagger: 0.04, scrollTrigger: { trigger: '#about', start: 'top 70%', end: 'bottom 60%', scrub: 1 } });
+
+            gsap.utils.toArray('.stat-num').forEach(function (el) { var target = parseInt(el.dataset.count, 10); ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true, onEnter: function () { gsap.to({ v: 0 }, { v: target, duration: 2.5, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(this.targets()[0].v) + '+'; } }); } }); });
+
+            // STACKING CARDS
+            (function () {
+                var cards = document.querySelectorAll('.scard');
+                var N = cards.length;
+                var CARD_TOP = 80; // px from top where each card pins
+
+                // Set each card sticky + z-index
+                cards.forEach(function (card, i) {
+                    card.style.position = 'sticky';
+                    card.style.top = CARD_TOP + 'px';
+                    card.style.zIndex = i + 1;
+                });
+
+                // For each card (except last), animate it down/dim when next card arrives
+                cards.forEach(function (card, i) {
+                    if (i >= N - 1) return;
+                    var nextCard = cards[i + 1];
+                    var content = card.querySelector('.scard-content');
+                    var img = card.querySelector('.scard-img img');
+
+                    // Scale + fade the card gradually as the next card appears
+                    gsap.to(card, {
+                        scale: 0.94,
+                        opacity: 0.1,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: nextCard,
+                            start: 'top bottom',
+                            end: 'top ' + CARD_TOP + 'px',
+                            scrub: 1.5,
+                        }
+                    });
+
+                    // Move content slightly upward for a dynamic parallax fade
+                    gsap.to(content, {
+                        y: -24,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: nextCard,
+                            start: 'top bottom',
+                            end: 'top ' + CARD_TOP + 'px',
+                            scrub: 1.5,
+                        }
+                    });
+                });
+
+                // Entrance animation
+                gsap.from('.scard', {
+                    y: 60, opacity: 0, stagger: 0.1, duration: 1, ease: 'power3.out',
+                    scrollTrigger: { trigger: '#work', start: 'top 80%' }
+                });
+            })();
+
+            // NEURAL NETWORK
+            (function () {
+                var nc = document.getElementById('neural-canvas'), nctx = nc.getContext('2d'), tooltip = document.getElementById('skill-tooltip');
+                var NW, NH, nmouse = { x: -999, y: -999 };
+                var SKILLS = [
+                    { name: 'Python', color: '#f7c948', glow: 'rgba(247,201,72,' },
+                    { name: 'C++', color: '#00add8', glow: 'rgba(0,173,216,' },
+                    { name: 'SQL', color: '#a78bfa', glow: 'rgba(167,139,250,' },
+                    { name: 'FastAPI', color: '#009688', glow: 'rgba(0,150,136,' },
+                    { name: 'LangChain', color: '#22d3ee', glow: 'rgba(34,211,238,' },
+                    { name: 'LangGraph', color: '#818cf8', glow: 'rgba(129,140,248,' },
+                    { name: 'Groq', color: '#f97316', glow: 'rgba(249,115,22,' },
+                    { name: 'Streamlit', color: '#ff4b4b', glow: 'rgba(255,75,75,' },
+                    { name: 'Qdrant', color: '#6366f1', glow: 'rgba(99,102,241,' },
+                    { name: 'PostgreSQL', color: '#336791', glow: 'rgba(51,103,145,' },
+                    { name: 'NumPy', color: '#4dabf7', glow: 'rgba(77,171,247,' },
+                    { name: 'Pandas', color: '#e44d26', glow: 'rgba(228,77,38,' },
+                    { name: 'Scikit', color: '#f4a03a', glow: 'rgba(244,160,58,' },
+                    { name: 'Git', color: '#f05032', glow: 'rgba(240,80,50,' },
+                    { name: 'ChromaDB', color: '#7c3aed', glow: 'rgba(124,58,237,' }
+                ];
+                var nodes = [];
+                function rn() { NW = nc.width = nc.parentElement.offsetWidth; NH = nc.height = 520; initN(); }
+                function initN() { nodes = SKILLS.map(function (s, i) { var a = (i / SKILLS.length) * Math.PI * 2, rb = Math.min(NW, NH) * 0.32, r = rb * (0.7 + Math.random() * 0.4); return { name: s.name, color: s.color, glow: s.glow, x: NW / 2 + Math.cos(a) * r * (0.6 + Math.random() * 0.8), y: NH / 2 + Math.sin(a) * r * (0.6 + Math.random() * 0.8), vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, radius: 36 + Math.random() * 10, pulse: Math.random() * Math.PI * 2, hovered: false, energy: 0, ripples: [] }; }); }
+                function draw() {
+                    requestAnimationFrame(draw); nctx.clearRect(0, 0, NW, NH);
+                    nodes.forEach(function (n) {
+                        n.pulse += 0.025; n.x += n.vx; n.y += n.vy; if (n.x < n.radius || n.x > NW - n.radius) n.vx *= -1; if (n.y < n.radius || n.y > NH - n.radius) n.vy *= -1;
+                        var dx = nmouse.x - n.x, dy = nmouse.y - n.y, dist = Math.sqrt(dx * dx + dy * dy); n.hovered = dist < n.radius + 20; if (dist < 200 && dist > 0) { n.vx += (dx / dist) * 0.04; n.vy += (dy / dist) * 0.04; } var spd = Math.sqrt(n.vx * n.vx + n.vy * n.vy); if (spd > 1.2) { n.vx = (n.vx / spd) * 1.2; n.vy = (n.vy / spd) * 1.2; }
+                        if (n.hovered) n.energy = Math.min(1, n.energy + 0.06); else n.energy = Math.max(0, n.energy - 0.03);
+                        if (n.hovered && Math.random() < 0.08) n.ripples.push({ r: n.radius, a: 0.6 }); n.ripples = n.ripples.filter(function (rp) { return rp.a > 0; }); n.ripples.forEach(function (rp) { rp.r += 1.5; rp.a -= 0.015; });
+                    });
+                    var CON = Math.min(NW, NH) * 0.38;
+                    for (var i = 0; i < nodes.length; i++) { for (var j = i + 1; j < nodes.length; j++) { var a = nodes[i], b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy); if (d < CON) { var al = (1 - d / CON) * 0.25 * (1 + a.energy * 0.5 + b.energy * 0.5); nctx.beginPath(); nctx.moveTo(a.x, a.y); nctx.lineTo(b.x, b.y); var g = nctx.createLinearGradient(a.x, a.y, b.x, b.y); g.addColorStop(0, a.color + '88'); g.addColorStop(1, b.color + '88'); nctx.strokeStyle = g; nctx.lineWidth = (a.energy + b.energy) * 1.5 + 0.5; nctx.globalAlpha = al; nctx.stroke(); nctx.globalAlpha = 1; } } }
+                    nodes.forEach(function (n) {
+                        var pr = n.radius + Math.sin(n.pulse) * 3, er = pr + n.energy * 18;
+                        n.ripples.forEach(function (rp) { nctx.beginPath(); nctx.arc(n.x, n.y, rp.r, 0, Math.PI * 2); nctx.strokeStyle = n.color; nctx.lineWidth = 1; nctx.globalAlpha = rp.a; nctx.stroke(); nctx.globalAlpha = 1; });
+                        var og = nctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, er * 2.5); og.addColorStop(0, n.glow + (0.18 + n.energy * 0.3) + ')'); og.addColorStop(1, n.glow + '0)'); nctx.beginPath(); nctx.arc(n.x, n.y, er * 2.5, 0, Math.PI * 2); nctx.fillStyle = og; nctx.fill();
+                        var bg = nctx.createRadialGradient(n.x - er * 0.3, n.y - er * 0.3, 0, n.x, n.y, er); bg.addColorStop(0, 'rgba(255,255,255,0.15)'); bg.addColorStop(0.5, n.glow + '0.12)'); bg.addColorStop(1, 'rgba(0,0,0,0.4)'); nctx.beginPath(); nctx.arc(n.x, n.y, er, 0, Math.PI * 2); nctx.fillStyle = bg; nctx.fill();
+                        nctx.beginPath(); nctx.arc(n.x, n.y, er, 0, Math.PI * 2); nctx.strokeStyle = n.color; nctx.lineWidth = n.hovered ? 2.5 : 1; nctx.globalAlpha = 0.7 + n.energy * 0.3; nctx.stroke(); nctx.globalAlpha = 1;
+                        nctx.font = (n.hovered ? '700 ' : '600 ') + (12 + n.energy * 3) + 'px Outfit, sans-serif'; nctx.textAlign = 'center'; nctx.textBaseline = 'middle'; nctx.fillStyle = n.hovered ? '#fff' : n.color; nctx.globalAlpha = 0.85 + n.energy * 0.15; nctx.fillText(n.name, n.x, n.y); nctx.globalAlpha = 1;
+                    });
+                }
+                nc.addEventListener('mousemove', function (e) { var rect = nc.getBoundingClientRect(); nmouse.x = e.clientX - rect.left; nmouse.y = e.clientY - rect.top; var found = false; nodes.forEach(function (n) { var dx = nmouse.x - n.x, dy = nmouse.y - n.y; if (Math.sqrt(dx * dx + dy * dy) < n.radius + 20) { tooltip.style.opacity = '1'; tooltip.style.transform = 'translate(' + (e.clientX + 16) + 'px,' + (e.clientY - 12) + 'px)'; tooltip.textContent = n.name; tooltip.style.borderColor = n.color; tooltip.style.color = n.color; found = true; } }); if (!found) tooltip.style.opacity = '0'; }, { passive: true });
+                nc.addEventListener('mouseleave', function () { nmouse = { x: -999, y: -999 }; tooltip.style.opacity = '0'; });
+                rn(); window.addEventListener('resize', rn); draw();
+                gsap.from('#neural-canvas', { opacity: 0, scale: 0.95, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '#skills', start: 'top 80%' } });
+            })();
+
+            gsap.utils.toArray('.exp-item').forEach(function (el) { gsap.fromTo(el, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } }); });
+
+            var mqTrack = document.getElementById('marquee-track'); var mqX = 0, mqSpeed = 1.2, mqDir = 1, skew = 0;
+            function tm() {
+                requestAnimationFrame(tm);
+                mqX -= mqSpeed * mqDir;
+                if (mqTrack && mqTrack.children[0]) {
+                    var w = mqTrack.children[0].offsetWidth;
+                    if (mqDir === 1 && mqX <= -w) mqX += w;
+                    if (mqDir === -1 && mqX >= 0) mqX -= w;
+                }
+                skew += (0 - skew) * 0.08;
+                mqTrack.style.transform = 'translateX(' + mqX + 'px) skewX(' + skew + 'deg)';
+            }
+            tm();
+            ScrollTrigger.create({ onUpdate: function (self) { var v = self.getVelocity(); mqSpeed = 1.5 + Math.abs(v) / 300; mqDir = v >= 0 ? 1 : -1; skew = Math.max(-10, Math.min(10, v / 120)); } });
+
+            document.querySelectorAll('.magnetic').forEach(function (btn) { btn.addEventListener('mousemove', function (e) { var r = btn.getBoundingClientRect(), x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2; gsap.to(btn, { x: x * 0.35, y: y * 0.35, duration: 0.3, ease: 'power2.out' }); }); btn.addEventListener('mouseleave', function () { gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.3)' }); }); });
+
+            gsap.utils.toArray('#contact .gs-reveal').forEach(function (el) { gsap.fromTo(el, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } }); });
+            gsap.to('.scroll-cue', { opacity: 0, scrollTrigger: { trigger: '#hero', start: '20% top', end: '35% top', scrub: true } });
+
+            // 3D HERO TITLE MOUSE TILT PARALLAX
+            (function () {
+                var hGrp = document.getElementById('hero-title-group');
+                var hSec = document.getElementById('hero');
+                if (hGrp && hSec) {
+                    var mainName = hGrp.querySelector('.hero-name-main');
+                    hSec.addEventListener('mousemove', function (e) {
+                        var r = hSec.getBoundingClientRect();
+                        var x = (e.clientX - r.left) / r.width - 0.5;
+                        var y = (e.clientY - r.top) / r.height - 0.5;
+                        gsap.to(mainName, { rotateY: x * 22, rotateX: -y * 22, duration: 0.5, ease: 'power2.out' });
+                    });
+                    hSec.addEventListener('mouseleave', function () {
+                        gsap.to(mainName, { rotateY: 0, rotateX: 0, duration: 1.2, ease: 'elastic.out(1,0.3)' });
+                    });
+                }
+            })();
+
+            // 3D PHOTO TILT
+            (function () {
+                var pWrap = document.getElementById('hero-photo-wrap');
+                if (!pWrap) return;
+                var photo = pWrap.querySelector('.hero-photo');
+                pWrap.addEventListener('mousemove', function (e) {
+                    var r = pWrap.getBoundingClientRect();
+                    var x = (e.clientX - r.left) / r.width - 0.5;
+                    var y = (e.clientY - r.top) / r.height - 0.5;
+                    gsap.to(photo, { rotateY: x * 25, rotateX: -y * 25, scale: 1.05, duration: 0.4, ease: 'power2.out' });
+                });
+                pWrap.addEventListener('mouseleave', function () {
+                    gsap.to(photo, { rotateY: 0, rotateX: 0, scale: 1, duration: 0.8, ease: 'elastic.out(1,0.3)' });
+                });
+            })();
+        })();
+    </script>
+</body>
+
+</html>
