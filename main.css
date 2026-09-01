@@ -38,6 +38,22 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+body:not(.loaded) {
+    overflow: hidden !important;
+}
+
+body:not(.loaded) nav,
+body:not(.loaded) .hero-badge-tag,
+body:not(.loaded) .hero-name-main,
+body:not(.loaded) .hero-sub,
+body:not(.loaded) #hero-photo-wrap,
+body:not(.loaded) .scroll-cue,
+body:not(.loaded) #marquee-wrap {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+
 a {
     color: inherit;
     text-decoration: none;
@@ -869,8 +885,8 @@ nav.scrolled {
     will-change: transform;
 }
 
-/* ═══════════════ EXPERIENCE ═══════════════ */
-#experience {
+/* ═══════════════ EDUCATION ═══════════════ */
+#education {
     padding: 4rem 0 2rem;
     position: relative;
     z-index: 2;
@@ -879,7 +895,7 @@ nav.scrolled {
 .exp-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.8rem;
     position: relative;
 }
 
@@ -887,11 +903,11 @@ nav.scrolled {
     display: grid;
     grid-template-columns: 24px 220px 1fr;
     gap: 2rem;
-    padding: 2rem 2.2rem;
+    padding: 2.2rem 2.5rem;
     border: 1px solid var(--border);
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.015);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -936,14 +952,20 @@ nav.scrolled {
     transform: scale(1.4);
 }
 
+.exp-left {
+    display: flex;
+    flex-direction: column;
+}
+
 .exp-date {
     display: inline-block;
+    align-self: flex-start;
     font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
     color: var(--accent);
     letter-spacing: 1.5px;
     margin-bottom: 0.6rem;
-    padding: 0.25rem 0.75rem;
+    padding: 0.3rem 0.85rem;
     border-radius: 100px;
     background: rgba(99, 102, 241, 0.08);
     border: 1px solid rgba(99, 102, 241, 0.18);
@@ -962,6 +984,7 @@ nav.scrolled {
     font-weight: 800;
     letter-spacing: -0.5px;
     margin: 0;
+    line-height: 1.3;
     transition: all 0.3s ease;
 }
 
@@ -969,6 +992,11 @@ nav.scrolled {
     background: var(--grad);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.exp-right {
+    display: flex;
+    flex-direction: column;
 }
 
 .exp-co {
@@ -987,52 +1015,251 @@ nav.scrolled {
     margin: 0;
 }
 
-/* Certification Chips Grid */
-.cert-chips {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.9rem;
-    margin-top: 0.8rem;
+.edu-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
 }
 
-.cert-chip {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.9rem 1.2rem;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+.edu-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--cyan);
+    border: 1px solid rgba(99, 102, 241, 0.2);
     transition: all 0.3s ease;
 }
 
-.cert-chip:hover {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: rgba(99, 102, 241, 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+.exp-item:hover .edu-tag {
+    background: rgba(34, 211, 238, 0.12);
+    border-color: rgba(34, 211, 238, 0.35);
 }
 
-.cert-icon {
-    font-size: 1.4rem;
-    flex-shrink: 0;
+/* ═══════════════ CERTIFICATIONS & ACHIEVEMENTS ═══════════════ */
+#certifications {
+    padding: 4rem 0 2rem;
+    position: relative;
+    z-index: 2;
 }
 
-.cert-info {
+.cert-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--dim);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 3.5rem;
+}
+
+.cert-card {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    justify-content: space-between;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.015);
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cert-info strong {
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.88rem;
-    color: var(--text);
+.cert-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.cert-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.15);
+}
+
+.cert-card:hover::before {
+    opacity: 1;
+}
+
+.cert-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.cert-issuer-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
     font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    background: rgba(247, 201, 72, 0.12);
+    color: #f7c948;
+    border: 1px solid rgba(247, 201, 72, 0.3);
 }
 
-.cert-info span {
-    font-size: 0.78rem;
+.cert-issuer-badge.ibm {
+    background: rgba(34, 211, 238, 0.12);
+    color: var(--cyan);
+    border-color: rgba(34, 211, 238, 0.3);
+}
+
+.cert-issuer-badge.anthropic {
+    background: rgba(167, 139, 250, 0.12);
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.3);
+}
+
+.cert-issuer-badge.codehelp {
+    background: rgba(249, 115, 22, 0.12);
+    color: #f97316;
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.cert-issuer-badge.coursera {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.35);
+}
+
+.cert-spark {
+    color: var(--cyan);
+    font-size: 1rem;
+}
+
+.cert-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+}
+
+.cert-desc {
+    font-size: 0.9rem;
+    color: var(--dim);
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+    flex-grow: 1;
+}
+
+.cert-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding-top: 1.2rem;
+}
+
+.cert-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--cyan);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cert-link:hover {
+    background: var(--cyan);
+    color: #050508;
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Achievements Highlights */
+.achieve-row {
+    margin-top: 2rem;
+}
+
+.achieve-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.achieve-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.achieve-card {
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.012);
+    backdrop-filter: blur(10px);
+    transition: all 0.35s ease;
+    text-align: left;
+}
+
+.achieve-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+}
+
+.achieve-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.achieve-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text);
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.2rem;
+}
+
+.achieve-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+}
+
+.achieve-sub {
+    font-size: 0.82rem;
     color: var(--dim);
 }
 
@@ -1084,28 +1311,38 @@ nav.scrolled {
 .social-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.6rem;
     font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 0.8rem 1.8rem;
-    border: 1px solid var(--border);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding: 0.9rem 2.2rem;
     border-radius: 100px;
-    transition: all var(--fast);
-}
-
-.social-link:hover {
-    border-color: var(--accent);
-    background: rgba(99, 102, 241, 0.06);
-    transform: translateY(-2px);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .social-link span {
-    transition: transform var(--fast);
+    color: var(--cyan);
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(34, 211, 238, 0.2));
+    border-color: var(--cyan);
+    box-shadow: 0 12px 35px rgba(34, 211, 238, 0.3), 0 0 25px rgba(99, 102, 241, 0.35);
+    transform: translateY(-4px) scale(1.03);
 }
 
 .social-link:hover span {
-    transform: translate(2px, -2px);
+    transform: translate(3px, -3px) scale(1.25);
+    color: #ffffff;
 }
 
 /* ═══════════════ FOOTER ═══════════════ */
