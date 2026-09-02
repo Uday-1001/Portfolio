@@ -123,6 +123,66 @@
                     <div class="stat-lbl">CodeChef Rating</div>
                 </div>
             </div>
+
+            <!-- LEETCODE PROGRESS LINE CHART -->
+            <div class="leetcode-box-wrap gs-reveal" id="leetcode-box">
+                <div class="lc-header-row">
+                    <div class="lc-title-group">
+                        <div class="lc-badge">
+                            <svg class="lc-icon" viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="#FFA116"
+                                    d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.981v10.457c0 .367.143.72.401.983l5.352 5.352c.266.266.627.416 1.004.416.377 0 .738-.15 1.004-.416l5.352-5.352a1.39 1.39 0 0 0 .401-.983V6.771a1.374 1.374 0 0 0-.416-.981L14.48.438A1.37 1.37 0 0 0 13.483 0zm-.037 3.328l4.032 4.032v9.28l-4.032 4.032-4.032-4.032v-9.28l4.032-4.032z" />
+                            </svg>
+                            <span>LEETCODE CONTEST PROGRESS &amp; RATING GRAPH</span>
+                        </div>
+                        <h3 class="lc-subtitle">Contest Rating Trajectory: <span class="lc-rating-highlight">1460 ➔
+                                1863</span> (Top 7%)</h3>
+                    </div>
+                    <div class="lc-controls">
+                        <div class="lc-filter-group">
+                            <button class="lc-btn active" data-filter="all">All (30)</button>
+                            <button class="lc-btn" data-filter="peak">Peak Surge</button>
+                            <button class="lc-btn" data-filter="recent">Recent 10</button>
+                        </div>
+                        <button class="lc-toggle-card-btn" id="lc-toggle-card">
+                            <span>GitHub Card View</span>
+                        </button>
+                        <a href="https://leetcode.com/u/Uday_25468/" target="_blank" class="lc-profile-link">
+                            LeetCode Profile ↗
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lc-chart-container" id="lc-chart-container">
+                    <div class="lc-chart-tooltip" id="lc-tooltip"></div>
+                    <div class="lc-svg-wrap" id="lc-svg-wrap"></div>
+                </div>
+
+                <div class="lc-card-embed-wrap" id="lc-card-embed" style="display: none;">
+                    <a href="https://leetcode.com/u/Uday_25468/" target="_blank">
+                        <img src="https://leetcard.jacoblin.cool/Uday_25468?theme=dark&font=Outfit&ext=contest"
+                            alt="Uday LeetCode Card" class="lc-card-img" loading="lazy">
+                    </a>
+                </div>
+
+                <div class="lc-stats-footer">
+                    <div class="lc-stat-pill">
+                        <span class="pill-dot green"></span>
+                        <span class="pill-title">Contests Attended:</span>
+                        <span class="pill-val">30</span>
+                    </div>
+                    <div class="lc-stat-pill">
+                        <span class="pill-dot cyan"></span>
+                        <span class="pill-title">Peak Rating:</span>
+                        <span class="pill-val">1863.57 (Knight / Top 7.01%)</span>
+                    </div>
+                    <div class="lc-stat-pill">
+                        <span class="pill-dot indigo"></span>
+                        <span class="pill-title">Global Rank:</span>
+                        <span class="pill-val">#60,217</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -248,7 +308,7 @@
                     <div class="exp-right">
                         <span class="exp-co">JSS Academy of Technical Education, Noida</span>
                         <p>Specializing in Data Structures, Algorithms, Machine Learning, Operating Systems, and DBMS.
-                            Current SGPA: <strong>8.6 / 10</strong>. Focused on backend engineering and GenAI system
+                            Current SGPA: <strong>8.6 / 10</strong>. Focused on AI engineering and GenAI system
                             architecture.</p>
                         <div class="edu-highlights">
                             <span class="edu-tag">Data Structures &amp; Algorithms</span>
@@ -368,17 +428,109 @@
     <section id="contact">
         <div class="container contact-inner">
             <div class="label"><span>06</span> Get In Touch</div>
-            <h2 class="contact-heading gs-reveal">Have a project ?<br><span class="gradient-shimmer">Let's talk.</span>
-            </h2>
-            <a href="mailto:udayofficial104@gmail.com" class="mega-email magnetic"
-                id="mega-email">udayofficial104@gmail.com</a>
-            <div class="contact-row gs-reveal">
-                <a href="https://github.com/Uday-1001" target="_blank" class="social-link magnetic">GitHub
-                    <span>&#8599;</span></a>
-                <a href="https://www.linkedin.com/in/uday-raj-kashyap/" target="_blank"
-                    class="social-link magnetic">LinkedIn <span>&#8599;</span></a>
-                <a href="https://drive.google.com/file/d/1A0ZkBuilLRG1ShaeBpCrO41omwl4koWe/view?usp=sharing"
-                    target="_blank" class="social-link magnetic">My Resume <span>&#8599;</span></a>
+
+            <div class="contact-showcase-card gs-reveal">
+                <div class="contact-ambient-glow"></div>
+
+                <div class="contact-card-header">
+                    <div class="contact-status-pill">
+                        <span class="status-pulse-dot"></span>
+                        <span>AVAILABLE FOR NEW OPPORTUNITIES</span>
+                    </div>
+                    <div class="contact-tz-tag">
+                        <span>📍 Noida, India (IST / UTC+5:30)</span>
+                    </div>
+                </div>
+
+                <div class="contact-single-col">
+                    <h2 class="contact-heading">Have a project or idea?<br><span class="gradient-shimmer">Let's build
+                            something extraordinary.</span></h2>
+                    <p class="contact-subtext">Whether you're looking to build an AI/GenAI system, scale an algorithmic
+                        engine, or collaborate on innovative software — my inbox is always open.</p>
+
+                    <div class="mega-email-box">
+                        <span class="email-label">DIRECT EMAIL</span>
+                        <div class="email-action-row">
+                            <a href="mailto:udayofficial104@gmail.com" class="mega-email-link" id="mega-email">
+                                udayofficial104@gmail.com
+                            </a>
+                            <div class="email-btn-group">
+                                <button class="copy-email-btn" id="copy-email-btn" title="Copy Email to Clipboard">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <span id="copy-btn-text">Copy</span>
+                                </button>
+                                <a href="mailto:udayofficial104@gmail.com" class="direct-mail-btn">
+                                    <span>Send Email ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="email-copy-toast" id="email-toast">✓ Copied to clipboard!</div>
+                    </div>
+
+                    <div class="contact-social-grid">
+                        <a href="https://github.com/Uday-1001" target="_blank" class="social-tile github magnetic">
+                            <div class="tile-icon github">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path
+                                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                                </svg>
+                            </div>
+                            <div class="tile-info">
+                                <span class="tile-name">GitHub</span>
+                                <span class="tile-sub">@Uday-1001 ↗</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/uday-raj-kashyap/" target="_blank"
+                            class="social-tile linkedin magnetic">
+                            <div class="tile-icon linkedin">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path
+                                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                                </svg>
+                            </div>
+                            <div class="tile-info">
+                                <span class="tile-name">LinkedIn</span>
+                                <span class="tile-sub">Uday Raj Kashyap ↗</span>
+                            </div>
+                        </a>
+
+                        <a href="https://leetcode.com/u/Uday_25468/" target="_blank"
+                            class="social-tile leetcode magnetic">
+                            <div class="tile-icon leetcode">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path
+                                        d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.17 5.79a1.374 1.374 0 0 0-.416.981v10.457c0 .367.143.72.401.983l5.352 5.352c.266.266.627.416 1.004.416.377 0 .738-.15 1.004-.416l5.352-5.352a1.39 1.39 0 0 0 .401-.983V6.771a1.374 1.374 0 0 0-.416-.981L14.48.438A1.37 1.37 0 0 0 13.483 0zm-.037 3.328l4.032 4.032v9.28l-4.032 4.032-4.032-4.032v-9.28l4.032-4.032z" />
+                                </svg>
+                            </div>
+                            <div class="tile-info">
+                                <span class="tile-name">LeetCode</span>
+                                <span class="tile-sub">@Uday_25468 ↗</span>
+                            </div>
+                        </a>
+
+                        <a href="https://drive.google.com/file/d/1A0ZkBuilLRG1ShaeBpCrO41omwl4koWe/view?usp=sharing"
+                            target="_blank" class="social-tile resume magnetic">
+                            <div class="tile-icon resume">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
+                            </div>
+                            <div class="tile-info">
+                                <span class="tile-name">Resume</span>
+                                <span class="tile-sub">Download PDF ↗</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -420,7 +572,8 @@
 
             const pl = document.getElementById('preloader'), pn = document.getElementById('pre-num'), pf = document.getElementById('pre-fill');
             let pg = { v: 0 };
-            gsap.to(pg, { v: 100, duration: 2, ease: 'power2.inOut', onUpdate: function () { const v = Math.round(pg.v); pn.textContent = v; pf.style.width = v + '%'; }, onComplete: function () { gsap.timeline().to('.pre-inner', { y: -30, opacity: 0, duration: 0.35, ease: 'power2.in' }).to(pl, { yPercent: -100, duration: 0.75, ease: 'power4.inOut', onComplete: function () { pl.style.display = 'none'; document.body.classList.add('loaded'); heroEntrance(); } }, '-=0.1'); } });
+            gsap.to(pg, { v: 100, duration: 2, ease: 'power2.inOut', onUpdate: function () { const v = Math.round(pg.v); pn.textContent = v; pf.style.width = v + '%'; }, onComplete: function () { gsap.timeline().to('.pre-inner', { y: -30, opacity: 0, duration: 0.35, ease: 'power2.in' }).to(pl, { yPercent: -100, duration: 0.75, ease: 'power4.inOut', onComplete: function () { pl.style.display = 'none'; document.body.classList.add('loaded'); heroEntrance(); setTimeout(() => ScrollTrigger.refresh(), 100); } }, '-=0.1'); } });
+            window.addEventListener('load', function () { setTimeout(() => ScrollTrigger.refresh(), 200); });
 
             class TextScramble {
                 constructor(el) { this.el = el; this.chars = '!<>-_\\/[]{}=+*^?#_ABCDEFGHIJKLMNOPQRSTUVWXYZ'; this.frame = 0; this.queue = []; this.resolve = null; }
@@ -467,57 +620,94 @@
 
             gsap.utils.toArray('.stat-num').forEach(function (el) { var target = parseInt(el.dataset.count, 10); ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true, onEnter: function () { gsap.to({ v: 0 }, { v: target, duration: 2.5, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(this.targets()[0].v) + '+'; } }); } }); });
 
-            // STACKING CARDS
             (function () {
-                var cards = document.querySelectorAll('.scard');
+                var cards = gsap.utils.toArray('.scard');
                 var N = cards.length;
-                var CARD_TOP = 80; // px from top where each card pins
+                var BASE_TOP = 80;
+                var GAP = 18;
 
-                // Set each card sticky + z-index
                 cards.forEach(function (card, i) {
                     card.style.position = 'sticky';
-                    card.style.top = CARD_TOP + 'px';
+                    card.style.top = (BASE_TOP + i * GAP) + 'px';
                     card.style.zIndex = i + 1;
+                    card.style.transformOrigin = 'center top';
                 });
 
-                // For each card (except last), animate it down/dim when next card arrives
                 cards.forEach(function (card, i) {
-                    if (i >= N - 1) return;
-                    var nextCard = cards[i + 1];
-                    var content = card.querySelector('.scard-content');
+                    var cardsAbove = N - 1 - i;
+                    if (cardsAbove === 0) return;
+
                     var img = card.querySelector('.scard-img img');
+                    var content = card.querySelector('.scard-content');
 
-                    // Scale + fade the card gradually as the next card appears
-                    gsap.to(card, {
-                        scale: 0.94,
-                        opacity: 0.1,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: nextCard,
-                            start: 'top bottom',
-                            end: 'top ' + CARD_TOP + 'px',
-                            scrub: 1.5,
-                        }
-                    });
+                    for (var j = i + 1; j < N; j++) {
+                        var nextCard = cards[j];
+                        var nextPinTop = BASE_TOP + j * GAP;
+                        var step = j - i;
+                        var totalSteps = cardsAbove;
+                        var scaleTarget = 1 - (step / totalSteps) * 0.10;
+                        var opacityTarget = 1 - (step / totalSteps) * 0.55;
+                        var yTarget = -(step / totalSteps) * 20;
 
-                    // Move content slightly upward for a dynamic parallax fade
-                    gsap.to(content, {
-                        y: -24,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: nextCard,
-                            start: 'top bottom',
-                            end: 'top ' + CARD_TOP + 'px',
-                            scrub: 1.5,
+                        gsap.to(card, {
+                            scale: scaleTarget,
+                            opacity: opacityTarget,
+                            ease: 'none',
+                            scrollTrigger: {
+                                trigger: nextCard,
+                                start: 'top 100%',
+                                end: 'top ' + nextPinTop + 'px',
+                                scrub: true
+                            }
+                        });
+
+                        if (img) {
+                            gsap.to(img, {
+                                scale: 1 + (step / totalSteps) * 0.07,
+                                yPercent: -(step / totalSteps) * 5,
+                                ease: 'none',
+                                scrollTrigger: {
+                                    trigger: nextCard,
+                                    start: 'top 100%',
+                                    end: 'top ' + nextPinTop + 'px',
+                                    scrub: true
+                                }
+                            });
                         }
-                    });
+
+                        if (content) {
+                            gsap.to(content, {
+                                y: yTarget,
+                                opacity: opacityTarget + 0.1,
+                                ease: 'none',
+                                scrollTrigger: {
+                                    trigger: nextCard,
+                                    start: 'top 100%',
+                                    end: 'top ' + nextPinTop + 'px',
+                                    scrub: true
+                                }
+                            });
+                        }
+                    }
                 });
 
-                // Entrance animation
-                gsap.from('.scard', {
-                    y: 60, opacity: 0, stagger: 0.1, duration: 1, ease: 'power3.out',
-                    scrollTrigger: { trigger: '#work', start: 'top 80%' }
-                });
+                var lastCard = cards[N - 1];
+                var lastImg = lastCard.querySelector('.scard-img img');
+                var lastContent = lastCard.querySelector('.scard-content');
+                var nextSection = document.querySelector('#skills') || document.querySelector('#education');
+                if (nextSection) {
+                    var tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: nextSection,
+                            start: 'top 100%',
+                            end: 'top ' + (BASE_TOP + (N - 1) * GAP) + 'px',
+                            scrub: true
+                        }
+                    });
+                    tl.to(lastCard, { scale: 0.93, opacity: 0.55, ease: 'none' }, 0);
+                    if (lastImg) tl.to(lastImg, { scale: 1.07, yPercent: -4, ease: 'none' }, 0);
+                    if (lastContent) tl.to(lastContent, { y: -18, opacity: 0.5, ease: 'none' }, 0);
+                }
             })();
 
             // NEURAL NETWORK
@@ -622,6 +812,400 @@
                 pWrap.addEventListener('mouseleave', function () {
                     gsap.to(photo, { rotateY: 0, rotateX: 0, scale: 1, duration: 0.8, ease: 'elastic.out(1,0.3)' });
                 });
+            })();
+
+            // LEETCODE PROGRESS LINE CHART RENDERER
+            (function () {
+                var rawContests = [
+                    { title: "Weekly Contest 476", rating: 1480.55, ranking: 13675, solved: 2, total: 4 },
+                    { title: "Biweekly Contest 170", rating: 1465.07, ranking: 13440, solved: 2, total: 4 },
+                    { title: "Weekly Contest 477", rating: 1460.11, ranking: 12438, solved: 1, total: 4 },
+                    { title: "Weekly Contest 478", rating: 1478.99, ranking: 8265, solved: 2, total: 4 },
+                    { title: "Biweekly Contest 171", rating: 1501.21, ranking: 7738, solved: 2, total: 4 },
+                    { title: "Weekly Contest 479", rating: 1515.00, ranking: 8012, solved: 2, total: 4 },
+                    { title: "Biweekly Contest 172", rating: 1500.74, ranking: 14584, solved: 1, total: 4 },
+                    { title: "Weekly Contest 486", rating: 1556.28, ranking: 8061, solved: 3, total: 4 },
+                    { title: "Biweekly Contest 175", rating: 1563.37, ranking: 12392, solved: 2, total: 4 },
+                    { title: "Weekly Contest 487", rating: 1589.86, ranking: 7310, solved: 3, total: 4 },
+                    { title: "Weekly Contest 488", rating: 1597.73, ranking: 11362, solved: 2, total: 4 },
+                    { title: "Biweekly Contest 176", rating: 1612.29, ranking: 9331, solved: 3, total: 4 },
+                    { title: "Weekly Contest 490", rating: 1621.80, ranking: 9933, solved: 3, total: 4 },
+                    { title: "Weekly Contest 491", rating: 1644.61, ranking: 6843, solved: 2, total: 4 },
+                    { title: "Weekly Contest 492", rating: 1688.86, ranking: 3300, solved: 3, total: 4 },
+                    { title: "Biweekly Contest 178", rating: 1736.23, ranking: 2243, solved: 3, total: 4 },
+                    { title: "Weekly Contest 493", rating: 1764.04, ranking: 4067, solved: 2, total: 4 },
+                    { title: "Weekly Contest 494", rating: 1800.01, ranking: 2669, solved: 3, total: 4 },
+                    { title: "Biweekly Contest 179", rating: 1794.30, ranking: 7602, solved: 2, total: 4 },
+                    { title: "Weekly Contest 495", rating: 1817.43, ranking: 3619, solved: 3, total: 4 },
+                    { title: "Weekly Contest 496", rating: 1843.68, ranking: 2791, solved: 3, total: 4 },
+                    { title: "Weekly Contest 498", rating: 1855.28, ranking: 3731, solved: 3, total: 4 },
+                    { title: "Weekly Contest 499", rating: 1863.57, ranking: 3693, solved: 3, total: 4 },
+                    { title: "Weekly Contest 500", rating: 1854.47, ranking: 5413, solved: 3, total: 4 },
+                    { title: "Weekly Contest 508", rating: 1850.50, ranking: 5269, solved: 2, total: 4 },
+                    { title: "Biweekly Contest 186", rating: 1852.61, ranking: 4529, solved: 3, total: 4 },
+                    { title: "Weekly Contest 509", rating: 1842.24, ranking: 6535, solved: 2, total: 4 },
+                    { title: "Weekly Contest 510", rating: 1835.79, ranking: 5576, solved: 2, total: 4 },
+                    { title: "Weekly Contest 514", rating: 1832.62, ranking: 5210, solved: 2, total: 4 }
+                ];
+
+                var wrap = document.getElementById('lc-svg-wrap');
+                var tooltip = document.getElementById('lc-tooltip');
+                var cardEmbed = document.getElementById('lc-card-embed');
+                var chartContainer = document.getElementById('lc-chart-container');
+                var toggleCardBtn = document.getElementById('lc-toggle-card');
+                var filterBtns = document.querySelectorAll('.lc-btn');
+
+                if (!wrap) return;
+
+                var currentFilter = 'all';
+                var showingCard = false;
+
+                // Attempt async live fetch from Alfa LeetCode API
+                fetch('https://alfa-leetcode-api.onrender.com/Uday_25468/contest')
+                    .then(function (res) { return res.json(); })
+                    .then(function (data) {
+                        if (data && data.contestParticipation && data.contestParticipation.length > 0) {
+                            var liveList = data.contestParticipation
+                                .filter(function (c) { return c.attended && c.rating; })
+                                .map(function (c) {
+                                    return {
+                                        title: c.contest ? c.contest.title : 'Contest',
+                                        rating: Math.round(c.rating * 100) / 100,
+                                        ranking: c.ranking || 0,
+                                        solved: c.problemsSolved || 0,
+                                        total: c.totalProblems || 4
+                                    };
+                                });
+                            if (liveList.length >= 10) {
+                                rawContests = liveList;
+                                renderChart();
+                            }
+                        }
+                    })
+                    .catch(function () { /* Instant fallback dataset active */ });
+
+                toggleCardBtn.addEventListener('click', function () {
+                    showingCard = !showingCard;
+                    if (showingCard) {
+                        chartContainer.style.display = 'none';
+                        cardEmbed.style.display = 'block';
+                        toggleCardBtn.querySelector('span').textContent = 'Interactive Graph';
+                    } else {
+                        chartContainer.style.display = 'block';
+                        cardEmbed.style.display = 'none';
+                        toggleCardBtn.querySelector('span').textContent = 'GitHub Card View';
+                        renderChart();
+                    }
+                });
+
+                filterBtns.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
+                        currentFilter = btn.dataset.filter;
+                        renderChart();
+                    });
+                });
+
+                function getFilteredData() {
+                    if (currentFilter === 'peak') {
+                        return rawContests.slice(10, 24);
+                    } else if (currentFilter === 'recent') {
+                        return rawContests.slice(-10);
+                    }
+                    return rawContests;
+                }
+
+                function renderChart() {
+                    var list = getFilteredData();
+                    if (!list || list.length === 0) return;
+
+                    var svgW = wrap.offsetWidth || 800;
+                    var svgH = wrap.offsetHeight || 320;
+                    var padL = 45, padR = 25, padT = 30, padB = 40;
+                    var chartW = svgW - padL - padR;
+                    var chartH = svgH - padT - padB;
+
+                    var minR = Math.floor(Math.min.apply(null, list.map(function (d) { return d.rating; })) / 50) * 50 - 20;
+                    var maxR = Math.ceil(Math.max.apply(null, list.map(function (d) { return d.rating; })) / 50) * 50 + 20;
+
+                    var points = list.map(function (d, i) {
+                        var x = padL + (i / (list.length - 1)) * chartW;
+                        var y = padT + chartH - ((d.rating - minR) / (maxR - minR)) * chartH;
+                        return { x: x, y: y, data: d, idx: i };
+                    });
+
+                    // Build smooth SVG Path
+                    var pathD = '';
+                    for (var i = 0; i < points.length; i++) {
+                        if (i === 0) {
+                            pathD += 'M ' + points[i].x.toFixed(2) + ' ' + points[i].y.toFixed(2);
+                        } else {
+                            var p0 = points[i - 1];
+                            var p1 = points[i];
+                            var cx = (p0.x + p1.x) / 2;
+                            pathD += ' C ' + cx.toFixed(2) + ' ' + p0.y.toFixed(2) + ', ' + cx.toFixed(2) + ' ' + p1.y.toFixed(2) + ', ' + p1.x.toFixed(2) + ' ' + p1.y.toFixed(2);
+                        }
+                    }
+
+                    var lastP = points[points.length - 1];
+                    var firstP = points[0];
+                    var areaD = pathD + ' L ' + lastP.x.toFixed(2) + ' ' + (padT + chartH).toFixed(2) + ' L ' + firstP.x.toFixed(2) + ' ' + (padT + chartH).toFixed(2) + ' Z';
+
+                    // Grid lines
+                    var gridStep = (maxR - minR) > 300 ? 100 : 50;
+                    var gridHTML = '';
+                    for (var r = Math.ceil(minR / gridStep) * gridStep; r <= maxR; r += gridStep) {
+                        var gy = padT + chartH - ((r - minR) / (maxR - minR)) * chartH;
+                        gridHTML += '<line x1="' + padL + '" y1="' + gy + '" x2="' + (svgW - padR) + '" y2="' + gy + '" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4,4" />';
+                        gridHTML += '<text x="' + (padL - 8) + '" y="' + (gy + 4) + '" fill="rgba(240,240,245,0.4)" font-size="10" font-family="Space Mono, monospace" text-anchor="end">' + r + '</text>';
+                    }
+
+                    // Find peak point
+                    var maxVal = Math.max.apply(null, list.map(function (d) { return d.rating; }));
+                    var peakPoint = points.find(function (p) { return p.data.rating === maxVal; });
+
+                    // Generate Dots
+                    var dotsHTML = points.map(function (p) {
+                        var isPeak = (p === peakPoint);
+                        var fill = isPeak ? '#ffa116' : '#22d3ee';
+                        var r = isPeak ? 6 : 4;
+                        var pulse = isPeak ? '<circle cx="' + p.x + '" cy="' + p.y + '" r="12" fill="rgba(255,161,22,0.35)" class="lc-pulse-ring"><animate attributeName="r" values="6;14;6" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/></circle>' : '';
+                        return pulse + '<circle class="lc-dot" data-idx="' + p.idx + '" cx="' + p.x + '" cy="' + p.y + '" r="' + r + '" fill="' + fill + '" stroke="#0c0c12" stroke-width="2" style="cursor:pointer; transition: r 0.2s ease;" />';
+                    }).join('');
+
+                    var svgContent = '<svg viewBox="0 0 ' + svgW + ' ' + svgH + '" preserveAspectRatio="none" style="width:100%; height:100%; overflow:visible;">' +
+                        '<defs>' +
+                        '<linearGradient id="lcGradient" x1="0" y1="0" x2="0" y2="1">' +
+                        '<stop offset="0%" stop-color="#22d3ee" stop-opacity="0.3" />' +
+                        '<stop offset="60%" stop-color="#6366f1" stop-opacity="0.08" />' +
+                        '<stop offset="100%" stop-color="#6366f1" stop-opacity="0" />' +
+                        '</linearGradient>' +
+                        '<linearGradient id="lcLineGrad" x1="0" y1="0" x2="1" y2="0">' +
+                        '<stop offset="0%" stop-color="#6366f1" />' +
+                        '<stop offset="50%" stop-color="#22d3ee" />' +
+                        '<stop offset="100%" stop-color="#ffa116" />' +
+                        '</linearGradient>' +
+                        '</defs>' +
+                        '<g class="lc-grid">' + gridHTML + '</g>' +
+                        '<path class="lc-area" d="' + areaD + '" fill="url(#lcGradient)" />' +
+                        '<path class="lc-path" d="' + pathD + '" fill="none" stroke="url(#lcLineGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />' +
+                        '<line id="lc-guide-line" x1="0" y1="' + padT + '" x2="0" y2="' + (padT + chartH) + '" stroke="rgba(34,211,238,0.5)" stroke-dasharray="3,3" opacity="0" />' +
+                        '<g class="lc-dots">' + dotsHTML + '</g>' +
+                        '</svg>';
+
+                    wrap.innerHTML = svgContent;
+
+                    var svgEl = wrap.querySelector('svg');
+                    var guideLine = wrap.querySelector('#lc-guide-line');
+                    var dots = wrap.querySelectorAll('.lc-dot');
+
+                    function showTooltip(p) {
+                        var prevRating = p.idx > 0 ? list[p.idx - 1].rating : p.data.rating;
+                        var diff = Math.round((p.data.rating - prevRating) * 100) / 100;
+                        var diffStr = diff >= 0 ? '<span style="color:#22c55e;">▲ +' + diff + '</span>' : '<span style="color:#ef4444;">▼ ' + diff + '</span>';
+
+                        tooltip.innerHTML = '<div class="lc-tooltip-title">' + p.data.title + '</div>' +
+                            '<div class="lc-tooltip-row"><span>Rating: <strong>' + p.data.rating + '</strong> (' + diffStr + ')</span></div>' +
+                            '<div class="lc-tooltip-row"><span>Rank: <strong>#' + (p.data.ranking ? p.data.ranking.toLocaleString() : 'N/A') + '</strong></span><span>Solved: <strong>' + p.data.solved + '/' + p.data.total + '</strong></span></div>';
+
+                        tooltip.style.opacity = '1';
+                        var containerRect = chartContainer.getBoundingClientRect();
+                        var posX = (p.x / svgW) * containerRect.width;
+                        var posY = (p.y / svgH) * containerRect.height;
+                        tooltip.style.left = posX + 'px';
+                        tooltip.style.top = posY + 'px';
+
+                        if (guideLine) {
+                            guideLine.setAttribute('x1', p.x);
+                            guideLine.setAttribute('x2', p.x);
+                            guideLine.setAttribute('opacity', '1');
+                        }
+                    }
+
+                    function hideTooltip() {
+                        tooltip.style.opacity = '0';
+                        if (guideLine) guideLine.setAttribute('opacity', '0');
+                    }
+
+                    dots.forEach(function (dot) {
+                        dot.addEventListener('mouseenter', function () {
+                            var idx = parseInt(dot.dataset.idx, 10);
+                            showTooltip(points[idx]);
+                            dot.setAttribute('r', '7');
+                        });
+                        dot.addEventListener('mouseleave', function () {
+                            hideTooltip();
+                            var isPeak = (points[parseInt(dot.dataset.idx, 10)] === peakPoint);
+                            dot.setAttribute('r', isPeak ? '6' : '4');
+                        });
+                    });
+
+                    svgEl.addEventListener('mousemove', function (e) {
+                        var rect = svgEl.getBoundingClientRect();
+                        var mouseX = (e.clientX - rect.left) * (svgW / rect.width);
+                        var closest = points.reduce(function (prev, curr) {
+                            return Math.abs(curr.x - mouseX) < Math.abs(prev.x - mouseX) ? curr : prev;
+                        });
+                        if (closest && Math.abs(closest.x - mouseX) < (chartW / list.length) * 1.5) {
+                            showTooltip(closest);
+                        }
+                    });
+
+                    chartContainer.addEventListener('mouseleave', hideTooltip);
+                }
+
+                renderChart();
+                window.addEventListener('resize', renderChart, { passive: true });
+            })();
+
+            // 3D CARD MOUSE TILT PARALLAX EFFECT
+            (function () {
+                // 1. Certifications Cards (.cert-card)
+                var certCards = document.querySelectorAll('.cert-card');
+                certCards.forEach(function (card) {
+                    card.addEventListener('mousemove', function (e) {
+                        var r = card.getBoundingClientRect();
+                        var x = (e.clientX - r.left) / r.width - 0.5;
+                        var y = (e.clientY - r.top) / r.height - 0.5;
+
+                        gsap.to(card, {
+                            rotateY: x * 22,
+                            rotateX: -y * 22,
+                            scale: 1.035,
+                            transformPerspective: 800,
+                            ease: 'power2.out',
+                            duration: 0.35
+                        });
+                    });
+
+                    card.addEventListener('mouseleave', function () {
+                        gsap.to(card, {
+                            rotateY: 0,
+                            rotateX: 0,
+                            scale: 1,
+                            ease: 'elastic.out(1, 0.4)',
+                            duration: 0.8
+                        });
+                    });
+                });
+
+                // 3. Showcase Boxes (.leetcode-box-wrap)
+                var tiltBoxes = document.querySelectorAll('.leetcode-box-wrap');
+                tiltBoxes.forEach(function (box) {
+                    box.addEventListener('mousemove', function (e) {
+                        var r = box.getBoundingClientRect();
+                        var x = (e.clientX - r.left) / r.width - 0.5;
+                        var y = (e.clientY - r.top) / r.height - 0.5;
+
+                        gsap.to(box, {
+                            rotateY: x * 12,
+                            rotateX: -y * 12,
+                            transformPerspective: 1200,
+                            ease: 'power2.out',
+                            duration: 0.4
+                        });
+                    });
+
+                    box.addEventListener('mouseleave', function () {
+                        gsap.to(box, {
+                            rotateY: 0,
+                            rotateX: 0,
+                            ease: 'elastic.out(1, 0.4)',
+                            duration: 0.9
+                        });
+                    });
+                });
+            })();
+
+            (function () {
+                var copyBtn = document.getElementById('copy-email-btn');
+                var copyText = document.getElementById('copy-btn-text');
+                var toast = document.getElementById('email-toast');
+                var contactForm = document.getElementById('contact-form');
+
+                if (copyBtn) {
+                    copyBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        var email = 'udayofficial104@gmail.com';
+
+                        function onSuccess() {
+                            if (copyText) copyText.textContent = '✓ Copied!';
+                            if (toast) {
+                                toast.classList.add('show');
+                                setTimeout(function () { toast.classList.remove('show'); }, 2500);
+                            }
+                            setTimeout(function () {
+                                if (copyText) copyText.textContent = 'Copy';
+                            }, 2000);
+                        }
+
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(email).then(onSuccess).catch(function () {
+                                fallbackCopy(email);
+                            });
+                        } else {
+                            fallbackCopy(email);
+                        }
+
+                        function fallbackCopy(text) {
+                            var ta = document.createElement('textarea');
+                            ta.value = text;
+                            ta.style.position = 'fixed';
+                            ta.style.opacity = '0';
+                            document.body.appendChild(ta);
+                            ta.focus();
+                            ta.select();
+                            try {
+                                document.execCommand('copy');
+                                onSuccess();
+                            } catch (err) { }
+                            document.body.removeChild(ta);
+                        }
+                    });
+                }
+
+                if (contactForm) {
+                    contactForm.addEventListener('submit', function (e) {
+                        var nameEl = document.getElementById('c-name');
+                        var emailEl = document.getElementById('c-email');
+                        var subjEl = document.getElementById('c-subject');
+                        var msgEl = document.getElementById('c-message');
+
+                        var name = nameEl ? nameEl.value.trim() : '';
+                        var email = emailEl ? emailEl.value.trim() : '';
+                        var subj = (subjEl && subjEl.value.trim()) ? subjEl.value.trim() : 'Portfolio Project Inquiry';
+                        var msg = msgEl ? msgEl.value.trim() : '';
+
+                        if (window.location.protocol === 'file:') {
+                            e.preventDefault();
+                            var bodyText = 'Hi Uday,\n\n' + msg + '\n\nBest regards,\n' + name + '\n(' + email + ')';
+                            var mailtoUrl = 'mailto:udayofficial104@gmail.com?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(bodyText);
+
+                            var submitBtnSpan = contactForm.querySelector('.submit-msg-btn span');
+                            if (submitBtnSpan) submitBtnSpan.textContent = '✓ Opening Mail Client...';
+
+                            window.location.href = mailtoUrl;
+
+                            setTimeout(function () {
+                                if (submitBtnSpan) submitBtnSpan.textContent = 'Send Direct Message ➔';
+                                contactForm.reset();
+                            }, 2500);
+                            return;
+                        }
+
+                        var submitBtnSpan = contactForm.querySelector('.submit-msg-btn span');
+                        var submitBtn = contactForm.querySelector('.submit-msg-btn');
+                        if (submitBtnSpan) submitBtnSpan.textContent = '✓ Message Sent!';
+                        if (submitBtn) submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #10b981)';
+
+                        setTimeout(function () {
+                            if (submitBtnSpan) submitBtnSpan.textContent = 'Send Direct Message ➔';
+                            if (submitBtn) submitBtn.style.background = '';
+                            contactForm.reset();
+                        }, 4000);
+                    });
+                }
             })();
         })();
     </script>
