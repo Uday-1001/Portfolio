@@ -137,7 +137,7 @@
                 </div>
             </div>
 
-            <!-- LEETCODE PROGRESS LINE CHART -->
+            
             <div class="leetcode-box-wrap gs-reveal" id="leetcode-box">
                 <div class="lc-header-row">
                     <div class="lc-title-group">
@@ -196,7 +196,7 @@
                     </div>
                 </div>
 
-                <!-- LEETCODE SUBMISSION HEATMAP -->
+                
                 <div class="lc-heatmap-section">
                     <div class="lc-heatmap-header">
                         <div class="lc-heatmap-title-row">
@@ -695,7 +695,7 @@
             }
 
             function heroEntrance() {
-                // Ensure initial hidden transform states
+
                 gsap.set('#nav', { opacity: 0, y: -25, visibility: 'visible' });
                 gsap.set('.hero-badge-tag', { opacity: 0, y: 30, visibility: 'visible' });
                 gsap.set('.hero-name-main', { opacity: 0, y: 35, visibility: 'visible' });
@@ -823,7 +823,6 @@
                 }
             })();
 
-            // NEURAL NETWORK
             (function () {
                 var nc = document.getElementById('neural-canvas'), nctx = nc.getContext('2d'), tooltip = document.getElementById('skill-tooltip');
                 var NW, NH, nmouse = { x: -999, y: -999 };
@@ -893,7 +892,6 @@
 
             gsap.to('.scroll-cue', { opacity: 0, scrollTrigger: { trigger: '#hero', start: '20% top', end: '35% top', scrub: true } });
 
-            // 3D HERO TITLE MOUSE TILT PARALLAX
             (function () {
                 var hGrp = document.getElementById('hero-title-group');
                 var hSec = document.getElementById('hero');
@@ -911,7 +909,6 @@
                 }
             })();
 
-            // 3D PHOTO TILT
             (function () {
                 var pWrap = document.getElementById('hero-photo-wrap');
                 if (!pWrap) return;
@@ -927,7 +924,6 @@
                 });
             })();
 
-            // LEETCODE PROGRESS LINE CHART RENDERER
             (function () {
                 var rawContests = [
                     { title: "Weekly Contest 476", rating: 1480.55, ranking: 13675, solved: 2, total: 4 },
@@ -973,7 +969,6 @@
                 var currentFilter = 'all';
                 var showingCard = false;
 
-                // Attempt async live fetch from Alfa LeetCode API
                 fetch('https://alfa-leetcode-api.onrender.com/Uday_25468/contest')
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
@@ -995,7 +990,7 @@
                             }
                         }
                     })
-                    .catch(function () { /* Instant fallback dataset active */ });
+                    .catch(function () {  });
 
                 toggleCardBtn.addEventListener('click', function () {
                     showingCard = !showingCard;
@@ -1048,7 +1043,6 @@
                         return { x: x, y: y, data: d, idx: i };
                     });
 
-                    // Build smooth SVG Path
                     var pathD = '';
                     for (var i = 0; i < points.length; i++) {
                         if (i === 0) {
@@ -1065,7 +1059,6 @@
                     var firstP = points[0];
                     var areaD = pathD + ' L ' + lastP.x.toFixed(2) + ' ' + (padT + chartH).toFixed(2) + ' L ' + firstP.x.toFixed(2) + ' ' + (padT + chartH).toFixed(2) + ' Z';
 
-                    // Grid lines
                     var gridStep = (maxR - minR) > 300 ? 100 : 50;
                     var gridHTML = '';
                     for (var r = Math.ceil(minR / gridStep) * gridStep; r <= maxR; r += gridStep) {
@@ -1074,11 +1067,9 @@
                         gridHTML += '<text x="' + (padL - 8) + '" y="' + (gy + 4) + '" fill="rgba(240,240,245,0.4)" font-size="10" font-family="Space Mono, monospace" text-anchor="end">' + r + '</text>';
                     }
 
-                    // Find peak point
                     var maxVal = Math.max.apply(null, list.map(function (d) { return d.rating; }));
                     var peakPoint = points.find(function (p) { return p.data.rating === maxVal; });
 
-                    // Generate Dots
                     var dotsHTML = points.map(function (p) {
                         var isPeak = (p === peakPoint);
                         var fill = isPeak ? '#ffa116' : '#22d3ee';
@@ -1172,9 +1163,8 @@
                 window.addEventListener('resize', renderChart, { passive: true });
             })();
 
-            // 3D CARD MOUSE TILT PARALLAX EFFECT
             (function () {
-                // 1. Certifications Cards (.cert-card)
+
                 var certCards = document.querySelectorAll('.cert-card');
                 certCards.forEach(function (card) {
                     card.addEventListener('mousemove', function (e) {
@@ -1203,7 +1193,6 @@
                     });
                 });
 
-                // 3. Showcase Boxes (.leetcode-box-wrap)
                 var tiltBoxes = document.querySelectorAll('.leetcode-box-wrap');
                 tiltBoxes.forEach(function (box) {
                     box.addEventListener('mousemove', function (e) {
@@ -1231,13 +1220,14 @@
                 });
             })();
 
-            // LEETCODE SUBMISSION HEATMAP RENDERER
             (function () {
                 var LCUSER = 'Uday_25468';
                 var WEEKS = 52;
                 var CELL_SIZE = 13;
                 var CELL_GAP = 3;
                 var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+                var FALLBACK_CALENDAR = {"1757548800":5,"1757635200":7,"1757721600":10,"1757808000":3,"1757894400":8,"1757980800":6,"1758067200":2,"1758153600":2,"1758240000":1,"1758326400":1,"1758412800":4,"1758499200":8,"1758585600":6,"1758672000":8,"1758758400":2,"1758844800":1,"1758931200":1,"1759017600":1,"1759104000":3,"1759190400":1,"1759276800":1,"1759363200":6,"1759449600":2,"1759536000":8,"1759622400":17,"1759708800":6,"1759795200":2,"1759881600":5,"1759968000":4,"1760054400":4,"1760140800":3,"1760227200":1,"1760313600":3,"1760400000":1,"1760486400":3,"1760572800":3,"1760659200":4,"1760745600":4,"1760832000":3,"1760918400":5,"1761004800":1,"1761091200":4,"1761177600":10,"1761264000":4,"1761350400":22,"1761436800":6,"1761523200":9,"1761609600":7,"1761696000":10,"1761782400":9,"1761868800":6,"1761955200":25,"1762041600":3,"1762128000":4,"1762214400":25,"1762300800":4,"1762387200":2,"1762473600":2,"1762560000":4,"1762646400":5,"1762732800":5,"1762819200":3,"1762905600":1,"1762992000":5,"1763078400":4,"1763164800":1,"1763251200":7,"1763337600":7,"1763424000":8,"1763510400":3,"1763596800":4,"1763683200":3,"1763769600":9,"1763856000":9,"1763942400":8,"1764028800":9,"1764115200":8,"1764201600":7,"1764288000":5,"1764374400":6,"1764460800":4,"1764547200":1,"1764633600":1,"1764720000":2,"1764806400":3,"1764892800":2,"1764979200":14,"1765065600":28,"1765152000":17,"1765238400":10,"1765324800":10,"1765411200":18,"1765497600":12,"1765584000":4,"1765670400":2,"1765756800":1,"1765843200":3,"1766016000":5,"1766102400":2,"1766188800":5,"1766275200":8,"1766361600":7,"1766448000":6,"1766534400":11,"1766620800":10,"1766707200":8,"1766793600":2,"1766880000":9,"1766966400":7,"1767052800":1,"1767139200":1,"1767225600":1,"1767312000":2,"1767398400":17,"1767484800":4,"1767571200":4,"1767657600":4,"1767830400":1,"1767916800":1,"1768003200":7,"1768089600":3,"1768176000":3,"1768262400":5,"1768348800":4,"1768435200":10,"1768521600":5,"1768608000":4,"1768694400":10,"1768780800":6,"1768867200":4,"1768953600":4,"1769040000":7,"1769126400":8,"1769212800":8,"1769299200":15,"1769385600":10,"1769472000":7,"1769558400":3,"1769644800":6,"1769731200":8,"1769817600":19,"1769904000":10,"1769990400":3,"1770076800":5,"1770163200":7,"1770249600":4,"1770336000":9,"1770422400":6,"1770508800":10,"1770595200":10,"1770681600":1,"1770768000":4,"1770854400":1,"1770940800":6,"1771027200":13,"1771113600":4,"1771200000":3,"1771286400":3,"1771372800":4,"1771459200":2,"1771545600":2,"1771632000":1,"1771718400":4,"1771804800":5,"1771891200":3,"1771977600":3,"1772064000":2,"1772150400":1,"1772236800":9,"1772323200":8,"1772409600":1,"1772496000":8,"1772582400":6,"1772668800":10,"1772755200":6,"1772841600":8,"1772928000":13,"1773014400":7,"1773100800":5,"1773187200":2,"1773360000":4,"1773446400":4,"1773532800":6,"1773619200":5,"1773878400":1,"1774137600":6,"1774310400":8,"1774396800":4,"1774483200":2,"1774569600":11,"1774656000":2,"1774742400":10,"1774828800":1,"1775001600":2,"1775088000":4,"1775260800":1,"1775347200":6,"1775433600":3,"1775520000":3,"1775606400":3,"1775779200":1,"1775952000":3,"1776038400":1,"1776124800":2,"1776211200":1,"1776297600":2,"1776384000":1,"1776470400":1,"1776556800":3,"1776643200":1,"1776816000":1,"1776902400":3,"1776988800":2,"1777075200":3,"1777161600":6,"1777248000":7,"1777334400":2,"1777420800":1,"1777507200":4,"1777593600":2,"1777680000":2,"1777766400":5,"1777852800":1,"1777939200":10,"1778025600":3,"1778284800":1,"1778371200":2,"1778457600":5,"1778544000":2,"1778630400":2,"1778716800":3,"1778803200":2,"1778976000":14,"1779062400":2,"1779148800":1,"1779235200":1,"1779321600":1,"1779408000":8,"1779494400":1,"1779580800":4,"1779926400":5,"1780012800":2,"1780099200":1,"1780185600":3,"1780272000":6,"1780358400":11,"1780531200":1,"1780704000":1,"1780876800":3,"1780963200":3,"1781049600":1,"1781136000":19,"1781222400":8,"1781308800":4,"1781395200":12,"1781481600":18,"1781568000":16,"1781654400":11,"1781740800":2,"1781827200":24,"1781913600":6,"1782000000":4,"1782086400":14,"1782172800":6,"1782259200":7,"1782345600":5,"1782432000":9,"1782518400":8,"1782604800":9,"1782691200":11,"1782777600":11,"1782864000":2,"1782950400":7,"1783036800":4,"1783123200":7,"1783209600":5,"1783296000":4,"1783382400":2,"1783468800":2,"1783555200":2,"1783641600":3,"1783728000":1,"1783814400":16,"1783900800":1,"1783987200":1,"1784073600":1,"1784160000":1,"1784332800":2,"1784419200":4,"1784505600":9,"1784592000":5,"1784678400":2,"1784764800":6,"1784851200":1,"1784937600":2,"1785024000":4,"1785110400":1,"1785196800":2,"1785283200":7,"1785369600":9,"1785456000":1,"1785542400":5,"1785628800":7,"1785801600":1,"1785888000":3,"1785974400":3,"1786060800":3,"1786147200":2,"1786233600":6,"1786320000":1,"1786406400":2,"1786492800":2,"1786579200":1,"1786665600":6,"1786752000":2,"1786838400":1,"1786924800":1,"1787011200":3,"1787097600":1,"1787184000":1,"1787270400":2,"1787356800":10,"1787443200":3,"1787529600":4,"1787616000":10,"1787702400":4,"1787788800":2,"1787875200":5,"1787961600":12,"1788048000":11,"1788134400":3,"1788220800":3,"1788307200":1,"1788393600":10,"1788480000":5,"1788652800":9,"1788739200":3,"1788825600":9,"1788912000":1,"1788998400":1};
 
                 var grid = document.getElementById('lc-heatmap-grid');
                 var monthsEl = document.getElementById('lc-heatmap-months');
@@ -1247,7 +1237,6 @@
 
                 if (!grid) return;
 
-                // Create shared tooltip
                 var tip = document.createElement('div');
                 tip.className = 'lc-heatmap-tooltip';
                 document.body.appendChild(tip);
@@ -1268,24 +1257,19 @@
                 function renderHeatmap(calMap) {
                     if (!grid || !monthsEl) return;
 
-                    // Build an array of the last WEEKS*7 days ending today
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
 
-                    // Start on last Sunday WEEKS weeks ago
                     var startDate = new Date(today);
                     startDate.setDate(startDate.getDate() - (WEEKS * 7) + (7 - today.getDay()));
-                    // Align to Sunday start of that week
                     startDate.setDate(startDate.getDate() - startDate.getDay());
 
-                    // Build columns (weeks)
                     grid.innerHTML = '';
                     monthsEl.innerHTML = '';
 
                     var totalSubmissions = 0;
                     var activeDays = 0;
 
-                    // Build month label positions
                     var monthPositions = [];
                     var curMonth = -1;
 
@@ -1298,7 +1282,6 @@
                             date.setDate(startDate.getDate() + w * 7 + d);
 
                             if (date > today) {
-                                // Future day — render invisible placeholder
                                 var empty = document.createElement('span');
                                 empty.className = 'lc-heatmap-cell';
                                 empty.style.opacity = '0';
@@ -1306,13 +1289,11 @@
                                 continue;
                             }
 
-                            // Track month label
                             if (d === 0 && date.getMonth() !== curMonth) {
                                 curMonth = date.getMonth();
                                 monthPositions.push({ week: w, month: curMonth });
                             }
 
-                            // Use UTC midnight timestamp — LeetCode stores keys at UTC 00:00:00
                             var ts = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 1000;
                             var count = calMap[ts] || calMap[String(ts)] || 0;
                             var level = getLevel(count);
@@ -1328,7 +1309,6 @@
                             cell.setAttribute('data-count', count);
                             cell.setAttribute('data-date', formatDate(ts));
 
-                            // Animate in with delay
                             cell.style.opacity = '0';
                             cell.style.transform = 'scale(0.6)';
                             (function(c, delay) {
@@ -1339,7 +1319,6 @@
                                 }, delay);
                             })(cell, w * 8 + d * 2);
 
-                            // Hover tooltip
                             cell.addEventListener('mouseenter', function (e) {
                                 var count = this.getAttribute('data-count');
                                 var dateStr = this.getAttribute('data-date');
@@ -1360,25 +1339,7 @@
                         grid.appendChild(col);
                     }
 
-                    // Render month labels aligned to correct week columns
                     var colW = CELL_SIZE + CELL_GAP;
-                    var usedPositions = [];
-                    monthPositions.forEach(function(mp) {
-                        // Avoid overlapping month labels
-                        var skip = usedPositions.some(function(u) { return Math.abs(u - mp.week) < 4; });
-                        if (!skip) {
-                            usedPositions.push(mp.week);
-                            var lbl = document.createElement('span');
-                            lbl.className = 'lc-heatmap-month-label';
-                            lbl.textContent = MONTHS[mp.month];
-                            lbl.style.width = colW + 'px';
-                            lbl.style.display = 'inline-block';
-                            lbl.style.marginLeft = mp.week === 0 ? '0' : (mp.week * colW - (usedPositions.length > 1 ? usedPositions[usedPositions.length - 2] * colW : 0)) + 'px';
-                            monthsEl.appendChild(lbl);
-                        }
-                    });
-
-                    // Rebuild months as absolute-positioned labels
                     monthsEl.innerHTML = '';
                     monthsEl.style.position = 'relative';
                     monthsEl.style.height = '14px';
@@ -1393,17 +1354,19 @@
                     });
                     monthsEl.style.width = (WEEKS * colW) + 'px';
 
-                    // Update meta
                     if (metaEl) {
                         metaEl.textContent = totalSubmissions.toLocaleString() + ' submissions across ' + activeDays + ' active days in the last year';
                     }
                 }
 
-                function renderFallback(msg) {
-                    if (loadingEl) {
-                        loadingEl.innerHTML = '<span style="color:rgba(255,161,22,0.7);">⚠ ' + (msg || 'Could not load heatmap') + '</span>';
-                    }
-                    if (badgeEl) {
+                function setBadge(isLive) {
+                    if (!badgeEl) return;
+                    if (isLive) {
+                        badgeEl.style.color = '#22c55e';
+                        badgeEl.style.borderColor = 'rgba(34,197,94,0.3)';
+                        badgeEl.style.background = 'rgba(34,197,94,0.08)';
+                        badgeEl.textContent = '● LIVE';
+                    } else {
                         badgeEl.style.color = '#f59e0b';
                         badgeEl.style.borderColor = 'rgba(245,158,11,0.3)';
                         badgeEl.style.background = 'rgba(245,158,11,0.08)';
@@ -1411,51 +1374,72 @@
                     }
                 }
 
-                // Fetch from alfa-leetcode-api
-                fetch('https://alfa-leetcode-api.onrender.com/' + LCUSER + '/calendar')
-                    .then(function(res) {
-                        if (!res.ok) throw new Error('API error');
-                        return res.json();
-                    })
-                    .then(function(data) {
-                        // API returns { submissionCalendar: "{\"timestamp\":count,...}" }
-                        var calStr = data.submissionCalendar || data.submissionCalendarJSON || '{}';
-                        var calMap = {};
-                        try {
-                            calMap = typeof calStr === 'string' ? JSON.parse(calStr) : calStr;
-                        } catch(e) { calMap = {}; }
+                function parseCal(d) {
+                    if (!d) return null;
+                    var calStr = d.submissionCalendar || d.submissionCalendarJSON || d;
+                    var calMap = null;
+                    try {
+                        calMap = typeof calStr === 'string' ? JSON.parse(calStr) : calStr;
+                    } catch(e) { calMap = null; }
+                    return (calMap && Object.keys(calMap).length > 0) ? calMap : null;
+                }
 
-                        if (loadingEl) loadingEl.style.display = 'none';
-                        renderHeatmap(calMap);
+                function useFallback() {
+                    if (loadingEl) loadingEl.style.display = 'none';
+                    setBadge(false);
+                    renderHeatmap(FALLBACK_CALENDAR);
+                }
+
+                function fetchWithTimeout(url, timeoutMs) {
+                    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+                    var id = controller ? setTimeout(function() { controller.abort(); }, timeoutMs) : null;
+                    return fetch(url, controller ? { signal: controller.signal } : {})
+                        .then(function(res) {
+                            if (id) clearTimeout(id);
+                            if (!res.ok) throw new Error('HTTP ' + res.status);
+                            return res.json();
+                        })
+                        .catch(function(err) {
+                            if (id) clearTimeout(id);
+                            throw err;
+                        });
+                }
+
+                fetchWithTimeout('https://leetcode-api-faisalshohag.vercel.app/' + LCUSER, 4000)
+                    .then(function(data) {
+                        var calMap = parseCal(data);
+                        if (calMap) {
+                            if (loadingEl) loadingEl.style.display = 'none';
+                            setBadge(true);
+                            renderHeatmap(calMap);
+                        } else {
+                            throw new Error('Empty data');
+                        }
                     })
                     .catch(function() {
-                        // Fallback: try alternate endpoint
-                        fetch('https://alfa-leetcode-api.onrender.com/userProfile/' + LCUSER)
-                            .then(function(r) { return r.json(); })
-                            .then(function(d) {
-                                var calStr = d.submissionCalendar || '{}';
-                                var calMap = {};
-                                try { calMap = typeof calStr === 'string' ? JSON.parse(calStr) : calStr; } catch(e) {}
-                                if (Object.keys(calMap).length > 0) {
+
+                        fetchWithTimeout('https://alfa-leetcode-api.onrender.com/' + LCUSER + '/calendar', 3500)
+                            .then(function(data) {
+                                var calMap = parseCal(data);
+                                if (calMap) {
                                     if (loadingEl) loadingEl.style.display = 'none';
+                                    setBadge(true);
                                     renderHeatmap(calMap);
                                 } else {
-                                    renderFallback('API is waking up — refresh in a moment');
+                                    useFallback();
                                 }
                             })
                             .catch(function() {
-                                renderFallback('Submission data unavailable — API may be sleeping');
+                                useFallback();
                             });
                     });
             })();
-
 
             (function () {
                 var copyBtn = document.getElementById('copy-email-btn');
                 var copyText = document.getElementById('copy-btn-text');
                 var toast = document.getElementById('email-toast');
                 var contactForm = document.getElementById('contact-form');
-
 
                 if (copyBtn) {
                     copyBtn.addEventListener('click', function (e) {
@@ -1541,9 +1525,9 @@
                 }
             })();
         })();
-    </script>
+</script>
 
-    <!-- RESUME MODAL -->
+    
     <div id="resume-modal" class="arch-modal-overlay" aria-hidden="true">
         <div class="arch-modal-container resume-modal-container">
             <button id="resume-modal-close" class="arch-modal-close" title="Close modal">&times;</button>
@@ -1584,7 +1568,7 @@
         </div>
     </div>
 
-    <!-- ARCHITECTURE MODAL -->
+    
     <div id="arch-modal" class="arch-modal-overlay" aria-hidden="true">
         <div class="arch-modal-container">
             <button id="arch-modal-close" class="arch-modal-close" title="Close modal">&times;</button>
@@ -1618,7 +1602,6 @@
     </div>
 
     <script>
-        /* ════════════ ARCHITECTURE & RESUME MODAL VIEWER ════════════ */
         (function initArchViewer() {
             var currentZoom = 1.0;
 
@@ -1653,11 +1636,11 @@
     SA --> RA[📖 Reader Agent - Content Scraper] ::: agent
     RA --> WA[✍️ Specialized Writer - Report Generator] ::: agent
     WA --> CA[🧐 Report Critic - Evaluation & Scoring] ::: agent
-    
+
     CA -- Rejection / Feedback Loop --> WA
     CA -- Approval --> DB[(💾 Local SQLite DB)] ::: db
     CA -- Output --> UI
-    
+
     WA -. Powering Inference .- LLM[⚡ Groq & Gemini Models] ::: llm`,
 
                 'Morning-Synapse': `flowchart TD
@@ -1670,11 +1653,11 @@
         TC["TechCrunch RSS"]:::blueNode --> TC_Scrape["Extract Article Metadata"]:::blueNode
         VB["VentureBeat RSS"]:::blueNode --> VB_Scrape["Extract Article Metadata"]:::blueNode
         YT["YouTube RSS"]:::blueNode --> YT_Scrape["Extract Video Metadata"]:::blueNode
-        
+
         VB_Scrape --> VB_Md{"HTML to MD Converter"}:::blueNode
         VB_Md -->|Crawl Fail| VB_Skip["Skip Article"]:::redNode
         VB_Md -->|Success| Store_VB[("Store in DB")]:::greenNode
-        
+
         YT_Scrape --> YT_Trans{"Fetch YouTube Transcript"}:::blueNode
         YT_Trans -->|Error / Disabled| YT_FB["Fallback to Video Description"]:::purpleNode
         YT_Trans -->|Success| Store_YT[("Store in DB")]:::greenNode
@@ -1698,7 +1681,7 @@
     classDef dbStyle fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#6ee7b7;
 
     UI["💻 Streamlit Frontend"] ::: nodeStyle --> API{"⚡ REST API (FastAPI)"} ::: nodeStyle
-    
+
     subgraph Processing ["Processing Pipeline"]
         AV["🎵 Audio/Video Faster-Whisper"] ::: procStyle
         Doc["📄 Document Parsing Docling / Tesseract OCR"] ::: procStyle
@@ -1706,10 +1689,10 @@
 
     API --> AV
     API --> Doc
-    
+
     AV --> VectorDB[("Qdrant Vector DB & BM25 Sparse Index")] ::: dbStyle
     Doc --> VectorDB
-    
+
     Query["🔍 User Question"] ::: nodeStyle --> Hybrid["Hybrid Retrieval & Cohere Rerank"] ::: procStyle
     VectorDB --> Hybrid
     Hybrid --> LLM["⚡ Groq LLM + LangGraph RAG Engine"] ::: procStyle
@@ -1717,20 +1700,20 @@
 
                 'DEJA': `flowchart TD
     classDef default fill:#0f172a,stroke:#6366f1,stroke-width:2px,color:#f8fafc;
-    
+
     A[New Problem Input] --> B(FAISS + Cross-Encoder Retrieval)
     B --> C{Confident Match Found?}
-    
+
     C -->|Yes| D[Standard Pedagogy Pipeline]
     D --> D1[Stage 1: Hint based on past solution]
     D1 --> D2[Stage 2: Pseudocode]
     D2 --> D3[Stage 3: Reference Code]
-    
+
     C -->|No| E[Fallback Pipeline]
     E --> F{User Choice}
     F -->|Coach Mode| G[LLM Acts as Socratic Coach]
     F -->|Independent| H[User Solves Independently]
-    
+
     D3 --> I[Solve & Ingest]
     G --> I
     H --> I
@@ -1971,7 +1954,7 @@
                 }
             }
         })();
-    </script>
+</script>
 </body>
 
 </html>
