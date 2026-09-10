@@ -15,7 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-    <link rel="stylesheet" href="main.css?v=22">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="main.css?v=23">
 </head>
 
 <body>
@@ -43,9 +44,21 @@
             <a href="#certifications">Certifications</a>
             <a href="#contact">Contact</a>
         </div>
-        <div class="nav-status">
-            <span class="status-dot"></span>
-            <span>Available for work</span>
+        <div class="nav-right-group">
+            <button class="nav-resume-btn" id="nav-resume-btn" title="View & Download Resume">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span>Quick Resume</span>
+            </button>
+            <div class="nav-status">
+                <span class="status-dot"></span>
+                <span>Available for work</span>
+            </div>
         </div>
     </nav>
 
@@ -55,7 +68,7 @@
                 <div class="hero-title-group" id="hero-title-group">
                     <div class="hero-badge-tag">
                         <span class="pulse-spark">✦</span>
-                        <span>GENAI &amp; AI/ML ARCHITECT</span>
+                        <span>AI/ML ENGINEER • GENAI • AGENTIC SYSTEMS</span>
                     </div>
                     <h1 class="hero-name-main">
                         <span class="name-block solid-text" data-scramble>UDAY RAJ</span>
@@ -182,6 +195,48 @@
                         <span class="pill-val">#60,217</span>
                     </div>
                 </div>
+
+                <!-- LEETCODE SUBMISSION HEATMAP -->
+                <div class="lc-heatmap-section">
+                    <div class="lc-heatmap-header">
+                        <div class="lc-heatmap-title-row">
+                            <svg class="lc-icon" viewBox="0 0 24 24" width="14" height="14">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="#FFA116" stroke-width="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6" stroke="#FFA116" stroke-width="2"/>
+                                <line x1="8" y1="2" x2="8" y2="6" stroke="#FFA116" stroke-width="2"/>
+                                <line x1="3" y1="10" x2="21" y2="10" stroke="#FFA116" stroke-width="2"/>
+                            </svg>
+                            <span class="lc-heatmap-label">SUBMISSION ACTIVITY HEATMAP</span>
+                            <span class="lc-heatmap-live-badge" id="lc-heatmap-badge">● LIVE</span>
+                        </div>
+                        <div class="lc-heatmap-meta" id="lc-heatmap-meta">Loading activity data...</div>
+                    </div>
+                    <div class="lc-heatmap-scroll-wrap">
+                        <div class="lc-heatmap-months" id="lc-heatmap-months"></div>
+                        <div class="lc-heatmap-grid-row">
+                            <div class="lc-heatmap-days">
+                                <span>Mon</span>
+                                <span>Wed</span>
+                                <span>Fri</span>
+                            </div>
+                            <div class="lc-heatmap-grid" id="lc-heatmap-grid">
+                                <div class="lc-heatmap-loading" id="lc-heatmap-loading">
+                                    <div class="lc-spinner"></div>
+                                    <span>Fetching submission data...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lc-heatmap-legend">
+                        <span class="lc-legend-label">Less</span>
+                        <span class="lc-legend-cell" data-level="0"></span>
+                        <span class="lc-legend-cell" data-level="1"></span>
+                        <span class="lc-legend-cell" data-level="2"></span>
+                        <span class="lc-legend-cell" data-level="3"></span>
+                        <span class="lc-legend-cell" data-level="4"></span>
+                        <span class="lc-legend-label">More</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -208,8 +263,22 @@
                             <span>LangChain</span><span>Groq</span><span>Tavily API</span><span>Python</span>
                             <span>Agent Orchestration</span>
                         </div>
-                        <a href="https://github.com/Uday-1001/Research-Mind" target="_blank" class="scard-link">View on
-                            GitHub &#8599;</a>
+                        <div class="scard-actions">
+                            <button class="arch-btn" data-repo="Research-Mind" data-title="Research Mind"
+                                data-github="https://github.com/Uday-1001/Research-Mind">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                                </svg>
+                                <span>Architecture 📐</span>
+                            </button>
+                            <a href="https://github.com/Uday-1001/Research-Mind" target="_blank" class="scard-link">View
+                                on
+                                GitHub &#8599;</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -229,9 +298,23 @@
                             <span>Python</span><span>PostgreSQL</span><span>Groq API</span><span>GitHub Actions</span>
                             <span>AI Agents</span>
                         </div>
-                        <a href="https://github.com/Uday-1001/Morning-Synapse" target="_blank" class="scard-link">View
-                            on
-                            GitHub &#8599;</a>
+                        <div class="scard-actions">
+                            <button class="arch-btn" data-repo="Morning-Synapse" data-title="Morning Synapse"
+                                data-github="https://github.com/Uday-1001/Morning-Synapse">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                                </svg>
+                                <span>Architecture 📐</span>
+                            </button>
+                            <a href="https://github.com/Uday-1001/Morning-Synapse" target="_blank"
+                                class="scard-link">View
+                                on
+                                GitHub &#8599;</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -252,8 +335,22 @@
                             <span>RAG Systems</span>
                             <span>FastAPI</span><span>LangGraph</span><span>Qdrant</span><span>EasyOCR</span>
                         </div>
-                        <a href="https://github.com/Uday-1001/CogniSphere" target="_blank" class="scard-link">View on
-                            GitHub &#8599;</a>
+                        <div class="scard-actions">
+                            <button class="arch-btn" data-repo="CogniSphere" data-title="CogniSphere"
+                                data-github="https://github.com/Uday-1001/CogniSphere">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                                </svg>
+                                <span>Architecture 📐</span>
+                            </button>
+                            <a href="https://github.com/Uday-1001/CogniSphere" target="_blank" class="scard-link">View
+                                on
+                                GitHub &#8599;</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -275,11 +372,26 @@
                             <span>Python</span><span>LangChain</span><span>Groq</span>
                             <span>Problem Solving</span>
                         </div>
-                        <a href="https://github.com/Uday-1001/DEJA" target="_blank" class="scard-link">View on GitHub
-                            &#8599;</a>
+                        <div class="scard-actions">
+                            <button class="arch-btn" data-repo="DEJA" data-title="DEJA"
+                                data-github="https://github.com/Uday-1001/DEJA">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                                    <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                                </svg>
+                                <span>Architecture 📐</span>
+                            </button>
+                            <a href="https://github.com/Uday-1001/DEJA" target="_blank" class="scard-link">View on
+                                GitHub
+                                &#8599;</a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -307,8 +419,9 @@
                     </div>
                     <div class="exp-right">
                         <span class="exp-co">JSS Academy of Technical Education, Noida</span>
-                        <p>Specializing in Data Structures, Algorithms, Machine Learning, Operating Systems, and DBMS.
-                            Current SGPA: <strong>8.6 / 10</strong>. Focused on AI engineering and GenAI system
+                        <p>Specializing in Data Structures, Algorithms, Machine Learning, Operating Systems, and
+                            DBMS.<br>
+                            Current SGPA: <strong>8.6 / 10</strong>.<br> Focused on AI engineering and GenAI system
                             architecture.</p>
                         <div class="edu-highlights">
                             <span class="edu-tag">Data Structures &amp; Algorithms</span>
@@ -1118,11 +1231,231 @@
                 });
             })();
 
+            // LEETCODE SUBMISSION HEATMAP RENDERER
+            (function () {
+                var LCUSER = 'Uday_25468';
+                var WEEKS = 52;
+                var CELL_SIZE = 13;
+                var CELL_GAP = 3;
+                var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+                var grid = document.getElementById('lc-heatmap-grid');
+                var monthsEl = document.getElementById('lc-heatmap-months');
+                var loadingEl = document.getElementById('lc-heatmap-loading');
+                var metaEl = document.getElementById('lc-heatmap-meta');
+                var badgeEl = document.getElementById('lc-heatmap-badge');
+
+                if (!grid) return;
+
+                // Create shared tooltip
+                var tip = document.createElement('div');
+                tip.className = 'lc-heatmap-tooltip';
+                document.body.appendChild(tip);
+
+                function getLevel(count) {
+                    if (!count || count === 0) return 0;
+                    if (count <= 2) return 1;
+                    if (count <= 5) return 2;
+                    if (count <= 9) return 3;
+                    return 4;
+                }
+
+                function formatDate(ts) {
+                    var d = new Date(ts * 1000);
+                    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                }
+
+                function renderHeatmap(calMap) {
+                    if (!grid || !monthsEl) return;
+
+                    // Build an array of the last WEEKS*7 days ending today
+                    var today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    // Start on last Sunday WEEKS weeks ago
+                    var startDate = new Date(today);
+                    startDate.setDate(startDate.getDate() - (WEEKS * 7) + (7 - today.getDay()));
+                    // Align to Sunday start of that week
+                    startDate.setDate(startDate.getDate() - startDate.getDay());
+
+                    // Build columns (weeks)
+                    grid.innerHTML = '';
+                    monthsEl.innerHTML = '';
+
+                    var totalSubmissions = 0;
+                    var activeDays = 0;
+
+                    // Build month label positions
+                    var monthPositions = [];
+                    var curMonth = -1;
+
+                    for (var w = 0; w < WEEKS; w++) {
+                        var col = document.createElement('div');
+                        col.className = 'lc-heatmap-col';
+
+                        for (var d = 0; d < 7; d++) {
+                            var date = new Date(startDate);
+                            date.setDate(startDate.getDate() + w * 7 + d);
+
+                            if (date > today) {
+                                // Future day — render invisible placeholder
+                                var empty = document.createElement('span');
+                                empty.className = 'lc-heatmap-cell';
+                                empty.style.opacity = '0';
+                                col.appendChild(empty);
+                                continue;
+                            }
+
+                            // Track month label
+                            if (d === 0 && date.getMonth() !== curMonth) {
+                                curMonth = date.getMonth();
+                                monthPositions.push({ week: w, month: curMonth });
+                            }
+
+                            // Use UTC midnight timestamp — LeetCode stores keys at UTC 00:00:00
+                            var ts = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 1000;
+                            var count = calMap[ts] || calMap[String(ts)] || 0;
+                            var level = getLevel(count);
+
+                            if (count > 0) {
+                                totalSubmissions += count;
+                                activeDays++;
+                            }
+
+                            var cell = document.createElement('span');
+                            cell.className = 'lc-heatmap-cell';
+                            cell.setAttribute('data-level', level);
+                            cell.setAttribute('data-count', count);
+                            cell.setAttribute('data-date', formatDate(ts));
+
+                            // Animate in with delay
+                            cell.style.opacity = '0';
+                            cell.style.transform = 'scale(0.6)';
+                            (function(c, delay) {
+                                setTimeout(function() {
+                                    c.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                                    c.style.opacity = '1';
+                                    c.style.transform = 'scale(1)';
+                                }, delay);
+                            })(cell, w * 8 + d * 2);
+
+                            // Hover tooltip
+                            cell.addEventListener('mouseenter', function (e) {
+                                var count = this.getAttribute('data-count');
+                                var dateStr = this.getAttribute('data-date');
+                                tip.innerHTML = '<span style="color:#FFA116;font-weight:700;">' + count + ' submission' + (count == 1 ? '' : 's') + '</span><br>' + dateStr;
+                                tip.classList.add('visible');
+                            });
+                            cell.addEventListener('mousemove', function (e) {
+                                tip.style.left = (e.clientX + 14) + 'px';
+                                tip.style.top = (e.clientY - 40) + 'px';
+                            });
+                            cell.addEventListener('mouseleave', function () {
+                                tip.classList.remove('visible');
+                            });
+
+                            col.appendChild(cell);
+                        }
+
+                        grid.appendChild(col);
+                    }
+
+                    // Render month labels aligned to correct week columns
+                    var colW = CELL_SIZE + CELL_GAP;
+                    var usedPositions = [];
+                    monthPositions.forEach(function(mp) {
+                        // Avoid overlapping month labels
+                        var skip = usedPositions.some(function(u) { return Math.abs(u - mp.week) < 4; });
+                        if (!skip) {
+                            usedPositions.push(mp.week);
+                            var lbl = document.createElement('span');
+                            lbl.className = 'lc-heatmap-month-label';
+                            lbl.textContent = MONTHS[mp.month];
+                            lbl.style.width = colW + 'px';
+                            lbl.style.display = 'inline-block';
+                            lbl.style.marginLeft = mp.week === 0 ? '0' : (mp.week * colW - (usedPositions.length > 1 ? usedPositions[usedPositions.length - 2] * colW : 0)) + 'px';
+                            monthsEl.appendChild(lbl);
+                        }
+                    });
+
+                    // Rebuild months as absolute-positioned labels
+                    monthsEl.innerHTML = '';
+                    monthsEl.style.position = 'relative';
+                    monthsEl.style.height = '14px';
+                    monthPositions.forEach(function(mp, i) {
+                        if (i > 0 && mp.week - monthPositions[i-1].week < 4) return;
+                        var lbl = document.createElement('span');
+                        lbl.className = 'lc-heatmap-month-label';
+                        lbl.textContent = MONTHS[mp.month];
+                        lbl.style.position = 'absolute';
+                        lbl.style.left = (mp.week * colW) + 'px';
+                        monthsEl.appendChild(lbl);
+                    });
+                    monthsEl.style.width = (WEEKS * colW) + 'px';
+
+                    // Update meta
+                    if (metaEl) {
+                        metaEl.textContent = totalSubmissions.toLocaleString() + ' submissions across ' + activeDays + ' active days in the last year';
+                    }
+                }
+
+                function renderFallback(msg) {
+                    if (loadingEl) {
+                        loadingEl.innerHTML = '<span style="color:rgba(255,161,22,0.7);">⚠ ' + (msg || 'Could not load heatmap') + '</span>';
+                    }
+                    if (badgeEl) {
+                        badgeEl.style.color = '#f59e0b';
+                        badgeEl.style.borderColor = 'rgba(245,158,11,0.3)';
+                        badgeEl.style.background = 'rgba(245,158,11,0.08)';
+                        badgeEl.textContent = '● CACHED';
+                    }
+                }
+
+                // Fetch from alfa-leetcode-api
+                fetch('https://alfa-leetcode-api.onrender.com/' + LCUSER + '/calendar')
+                    .then(function(res) {
+                        if (!res.ok) throw new Error('API error');
+                        return res.json();
+                    })
+                    .then(function(data) {
+                        // API returns { submissionCalendar: "{\"timestamp\":count,...}" }
+                        var calStr = data.submissionCalendar || data.submissionCalendarJSON || '{}';
+                        var calMap = {};
+                        try {
+                            calMap = typeof calStr === 'string' ? JSON.parse(calStr) : calStr;
+                        } catch(e) { calMap = {}; }
+
+                        if (loadingEl) loadingEl.style.display = 'none';
+                        renderHeatmap(calMap);
+                    })
+                    .catch(function() {
+                        // Fallback: try alternate endpoint
+                        fetch('https://alfa-leetcode-api.onrender.com/userProfile/' + LCUSER)
+                            .then(function(r) { return r.json(); })
+                            .then(function(d) {
+                                var calStr = d.submissionCalendar || '{}';
+                                var calMap = {};
+                                try { calMap = typeof calStr === 'string' ? JSON.parse(calStr) : calStr; } catch(e) {}
+                                if (Object.keys(calMap).length > 0) {
+                                    if (loadingEl) loadingEl.style.display = 'none';
+                                    renderHeatmap(calMap);
+                                } else {
+                                    renderFallback('API is waking up — refresh in a moment');
+                                }
+                            })
+                            .catch(function() {
+                                renderFallback('Submission data unavailable — API may be sleeping');
+                            });
+                    });
+            })();
+
+
             (function () {
                 var copyBtn = document.getElementById('copy-email-btn');
                 var copyText = document.getElementById('copy-btn-text');
                 var toast = document.getElementById('email-toast');
                 var contactForm = document.getElementById('contact-form');
+
 
                 if (copyBtn) {
                     copyBtn.addEventListener('click', function (e) {
@@ -1207,6 +1540,436 @@
                     });
                 }
             })();
+        })();
+    </script>
+
+    <!-- RESUME MODAL -->
+    <div id="resume-modal" class="arch-modal-overlay" aria-hidden="true">
+        <div class="arch-modal-container resume-modal-container">
+            <button id="resume-modal-close" class="arch-modal-close" title="Close modal">&times;</button>
+            <div class="arch-modal-header">
+                <div class="arch-header-top">
+                    <div class="arch-badge">✦ CURRICULUM VITAE</div>
+                    <div class="resume-actions-top">
+                        <a href="https://drive.google.com/file/d/1-kJ7XQKYGwQOX153oHnkxmz_50F2uLKG/view?usp=sharing"
+                            target="_blank" id="resume-download-btn" class="arch-readme-btn resume-download-primary"
+                            download="Uday_Raj_Kashyap_Resume.pdf">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Download PDF</span>
+                        </a>
+                    </div>
+                </div>
+                <h2 class="arch-modal-title">Uday Raj Kashyap — Resume</h2>
+                <p class="arch-modal-subtitle">AI/ML &amp; GenAI Engineer • Knight (LeetCode 1863) • Noida, India</p>
+            </div>
+            <div class="arch-modal-body resume-modal-body">
+                <div class="resume-iframe-wrap">
+                    <iframe src="https://drive.google.com/file/d/1-kJ7XQKYGwQOX153oHnkxmz_50F2uLKG/preview"
+                        allow="autoplay" allowfullscreen title="Uday Raj Kashyap Resume Preview"
+                        style="border:0;"></iframe>
+                </div>
+            </div>
+            <div class="arch-modal-footer">
+                <span class="arch-source-tag">Official Resume Document • Uday Raj Kashyap</span>
+                <a href="https://drive.google.com/file/d/1-kJ7XQKYGwQOX153oHnkxmz_50F2uLKG/view?usp=sharing"
+                    target="_blank" class="arch-readme-btn">
+                    <span>Open in Drive ↗</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ARCHITECTURE MODAL -->
+    <div id="arch-modal" class="arch-modal-overlay" aria-hidden="true">
+        <div class="arch-modal-container">
+            <button id="arch-modal-close" class="arch-modal-close" title="Close modal">&times;</button>
+            <div class="arch-modal-header">
+                <div class="arch-header-top">
+                    <div class="arch-badge">✦ SYSTEM ARCHITECTURE</div>
+                    <div class="arch-zoom-toolbar">
+                        <button id="arch-zoom-out" class="arch-zoom-btn" title="Zoom Out">&minus;</button>
+                        <span id="arch-zoom-level" class="arch-zoom-val">100%</span>
+                        <button id="arch-zoom-in" class="arch-zoom-btn" title="Zoom In">&plus;</button>
+                        <button id="arch-zoom-reset" class="arch-zoom-btn" title="Reset Zoom">↺</button>
+                    </div>
+                </div>
+                <h2 id="arch-modal-title" class="arch-modal-title">Project Architecture</h2>
+                <p id="arch-modal-subtitle" class="arch-modal-subtitle">Extracted from repository README.md</p>
+            </div>
+            <div class="arch-modal-body">
+                <div id="arch-loading" class="arch-loading">
+                    <div class="arch-spinner"></div>
+                    <span>Fetching & Parsing README Architecture...</span>
+                </div>
+                <div id="arch-diagram-container" class="arch-diagram-container"></div>
+            </div>
+            <div class="arch-modal-footer">
+                <span id="arch-source-tag" class="arch-source-tag">Source: GitHub README.md</span>
+                <a id="arch-readme-link" href="#" target="_blank" class="arch-readme-btn">
+                    <span>View Repository on GitHub &#8599;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ════════════ ARCHITECTURE & RESUME MODAL VIEWER ════════════ */
+        (function initArchViewer() {
+            var currentZoom = 1.0;
+
+            function openResumeModal() {
+                var rModal = document.getElementById('resume-modal');
+                if (rModal) {
+                    rModal.classList.add('active');
+                    rModal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeResumeModal() {
+                var rModal = document.getElementById('resume-modal');
+                if (rModal) {
+                    rModal.classList.remove('active');
+                    rModal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            var FALLBACK_DIAGRAMS = {
+                'Research-Mind': `flowchart TD
+    classDef user fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#fff,rx:20,ry:20
+    classDef ui fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#38bdf8
+    classDef agent fill:#1e1b4b,stroke:#6366f1,stroke-width:2px,color:#a5b4fc
+    classDef db fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#6ee7b7
+    classDef llm fill:#311b92,stroke:#8b5cf6,stroke-width:2px,color:#c084fc
+
+    U[👤 User Query] ::: user --> UI[💻 Streamlit Frontend] ::: ui
+    UI --> SA[🔍 Search Agent - Tavily API] ::: agent
+    SA --> RA[📖 Reader Agent - Content Scraper] ::: agent
+    RA --> WA[✍️ Specialized Writer - Report Generator] ::: agent
+    WA --> CA[🧐 Report Critic - Evaluation & Scoring] ::: agent
+    
+    CA -- Rejection / Feedback Loop --> WA
+    CA -- Approval --> DB[(💾 Local SQLite DB)] ::: db
+    CA -- Output --> UI
+    
+    WA -. Powering Inference .- LLM[⚡ Groq & Gemini Models] ::: llm`,
+
+                'Morning-Synapse': `flowchart TD
+    classDef blueNode fill:#172554,stroke:#3B82F6,stroke-width:2px,color:#EFF6FF;
+    classDef redNode fill:#450A0A,stroke:#EF4444,stroke-width:2px,color:#FEE2E2;
+    classDef greenNode fill:#022C22,stroke:#10B981,stroke-width:2px,color:#ECFDF5;
+    classDef purpleNode fill:#3B0764,stroke:#A855F7,stroke-width:2px,color:#FAF5FF;
+
+    subgraph Scraping ["1. Data Scraping & Fallbacks"]
+        TC["TechCrunch RSS"]:::blueNode --> TC_Scrape["Extract Article Metadata"]:::blueNode
+        VB["VentureBeat RSS"]:::blueNode --> VB_Scrape["Extract Article Metadata"]:::blueNode
+        YT["YouTube RSS"]:::blueNode --> YT_Scrape["Extract Video Metadata"]:::blueNode
+        
+        VB_Scrape --> VB_Md{"HTML to MD Converter"}:::blueNode
+        VB_Md -->|Crawl Fail| VB_Skip["Skip Article"]:::redNode
+        VB_Md -->|Success| Store_VB[("Store in DB")]:::greenNode
+        
+        YT_Scrape --> YT_Trans{"Fetch YouTube Transcript"}:::blueNode
+        YT_Trans -->|Error / Disabled| YT_FB["Fallback to Video Description"]:::purpleNode
+        YT_Trans -->|Success| Store_YT[("Store in DB")]:::greenNode
+        YT_FB --> Store_YT
+    end
+
+    subgraph Digester ["2. Digest Generation"]
+        DB[("PostgreSQL DB")]:::blueNode -->|Undigested Items| Gen_Digest[["LLM Digest Generator"]]:::greenNode
+        Gen_Digest -->|Groq Success| Store_Digest[("Save Digest to DB")]:::greenNode
+    end
+
+    subgraph Curation ["3. Diversity Curation & Email Delivery"]
+        Check_Digests["Rank Digests by Profile"]:::blueNode --> Diversity["Source Diversity Reranker"]:::purpleNode
+        Diversity --> Top10["Format Top 10 Email Digest"]:::greenNode
+        Top10 --> SendEmail["Send via GitHub Actions at 8:00 AM IST"]:::greenNode
+    end`,
+
+                'CogniSphere': `flowchart TD
+    classDef nodeStyle fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
+    classDef procStyle fill:#1e1b4b,stroke:#6366f1,stroke-width:2px,color:#a5b4fc;
+    classDef dbStyle fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#6ee7b7;
+
+    UI["💻 Streamlit Frontend"] ::: nodeStyle --> API{"⚡ REST API (FastAPI)"} ::: nodeStyle
+    
+    subgraph Processing ["Processing Pipeline"]
+        AV["🎵 Audio/Video Faster-Whisper"] ::: procStyle
+        Doc["📄 Document Parsing Docling / Tesseract OCR"] ::: procStyle
+    end
+
+    API --> AV
+    API --> Doc
+    
+    AV --> VectorDB[("Qdrant Vector DB & BM25 Sparse Index")] ::: dbStyle
+    Doc --> VectorDB
+    
+    Query["🔍 User Question"] ::: nodeStyle --> Hybrid["Hybrid Retrieval & Cohere Rerank"] ::: procStyle
+    VectorDB --> Hybrid
+    Hybrid --> LLM["⚡ Groq LLM + LangGraph RAG Engine"] ::: procStyle
+    LLM --> Answer["💬 Precise Answer with Video Timestamps & Citations"] ::: nodeStyle`,
+
+                'DEJA': `flowchart TD
+    classDef default fill:#0f172a,stroke:#6366f1,stroke-width:2px,color:#f8fafc;
+    
+    A[New Problem Input] --> B(FAISS + Cross-Encoder Retrieval)
+    B --> C{Confident Match Found?}
+    
+    C -->|Yes| D[Standard Pedagogy Pipeline]
+    D --> D1[Stage 1: Hint based on past solution]
+    D1 --> D2[Stage 2: Pseudocode]
+    D2 --> D3[Stage 3: Reference Code]
+    
+    C -->|No| E[Fallback Pipeline]
+    E --> F{User Choice}
+    F -->|Coach Mode| G[LLM Acts as Socratic Coach]
+    F -->|Independent| H[User Solves Independently]
+    
+    D3 --> I[Solve & Ingest]
+    G --> I
+    H --> I
+    I --> J[(Vector Database Updated)]`
+            };
+
+            if (typeof mermaid !== 'undefined') {
+                try {
+                    mermaid.initialize({
+                        startOnLoad: false,
+                        theme: 'dark',
+                        securityLevel: 'loose',
+                        themeVariables: {
+                            darkMode: true,
+                            background: '#0f172a',
+                            primaryColor: '#1e293b',
+                            primaryTextColor: '#f8fafc',
+                            primaryBorderColor: '#3b82f6',
+                            lineColor: '#60a5fa',
+                            secondaryColor: '#311b92',
+                            tertiaryColor: '#064e3b'
+                        }
+                    });
+                } catch (e) {
+                    console.warn('Mermaid init warning:', e);
+                }
+            }
+
+            function getEls() {
+                return {
+                    modal: document.getElementById('arch-modal'),
+                    closeBtn: document.getElementById('arch-modal-close'),
+                    title: document.getElementById('arch-modal-title'),
+                    subtitle: document.getElementById('arch-modal-subtitle'),
+                    loading: document.getElementById('arch-loading'),
+                    container: document.getElementById('arch-diagram-container'),
+                    readmeLink: document.getElementById('arch-readme-link'),
+                    sourceTag: document.getElementById('arch-source-tag')
+                };
+            }
+
+            function applyZoom() {
+                var els = getEls();
+                var svg = els.container ? els.container.querySelector('svg') : null;
+                if (svg) {
+                    svg.style.transform = 'scale(' + currentZoom + ')';
+                }
+                var zoomValEl = document.getElementById('arch-zoom-level');
+                if (zoomValEl) {
+                    zoomValEl.textContent = Math.round(currentZoom * 100) + '%';
+                }
+            }
+
+            function setZoom(val) {
+                currentZoom = Math.min(Math.max(val, 0.4), 3.0);
+                applyZoom();
+            }
+
+            function openModal() {
+                var els = getEls();
+                if (els.modal) {
+                    els.modal.classList.add('active');
+                    els.modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeModal() {
+                var els = getEls();
+                if (els.modal) {
+                    els.modal.classList.remove('active');
+                    els.modal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            document.addEventListener('click', function (e) {
+                var navResumeBtn = e.target.closest('#nav-resume-btn');
+                if (navResumeBtn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openResumeModal();
+                    return;
+                }
+
+                var resumeCloseBtn = e.target.closest('#resume-modal-close');
+                if (resumeCloseBtn) {
+                    closeResumeModal();
+                    return;
+                }
+
+                var resumeModalEl = document.getElementById('resume-modal');
+                if (e.target === resumeModalEl) {
+                    closeResumeModal();
+                    return;
+                }
+
+                var zoomInBtn = e.target.closest('#arch-zoom-in');
+                if (zoomInBtn) {
+                    setZoom(currentZoom + 0.25);
+                    return;
+                }
+
+                var zoomOutBtn = e.target.closest('#arch-zoom-out');
+                if (zoomOutBtn) {
+                    setZoom(currentZoom - 0.25);
+                    return;
+                }
+
+                var zoomResetBtn = e.target.closest('#arch-zoom-reset');
+                if (zoomResetBtn) {
+                    setZoom(1.0);
+                    return;
+                }
+
+                var closeBtn = e.target.closest('#arch-modal-close');
+                if (closeBtn) {
+                    closeModal();
+                    return;
+                }
+
+                var modalEl = document.getElementById('arch-modal');
+                if (e.target === modalEl) {
+                    closeModal();
+                    return;
+                }
+
+                var btn = e.target.closest('.arch-btn');
+                if (btn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var repo = btn.getAttribute('data-repo');
+                    var title = btn.getAttribute('data-title');
+                    var githubUrl = btn.getAttribute('data-github');
+
+                    var els = getEls();
+                    if (!els.modal) return;
+
+                    els.title.textContent = title + ' Architecture';
+                    els.subtitle.textContent = 'Parsing Architecture section from ' + repo + '/README.md...';
+                    els.readmeLink.href = githubUrl;
+                    els.container.innerHTML = '';
+                    els.loading.style.display = 'flex';
+                    currentZoom = 1.0;
+                    applyZoom();
+                    openModal();
+
+                    var rawUrl = 'https://raw.githubusercontent.com/Uday-1001/' + repo + '/main/README.md';
+
+                    fetch(rawUrl)
+                        .then(function (res) {
+                            if (!res.ok) throw new Error('Fetch failed');
+                            return res.text();
+                        })
+                        .then(function (mdText) {
+                            var mermaidCode = extractMermaidFromMd(mdText);
+                            if (mermaidCode) {
+                                els.subtitle.textContent = 'Live parsed from GitHub README.md';
+                                if (els.sourceTag) els.sourceTag.textContent = 'Live • GitHub main/README.md';
+                                renderDiagram(mermaidCode, els);
+                            } else {
+                                throw new Error('No mermaid diagram found in README');
+                            }
+                        })
+                        .catch(function () {
+                            var fallbackCode = FALLBACK_DIAGRAMS[repo];
+                            els.subtitle.textContent = 'Loaded from README architecture specification';
+                            if (els.sourceTag) els.sourceTag.textContent = 'Verified README Architecture';
+                            if (fallbackCode) {
+                                renderDiagram(fallbackCode, els);
+                            } else {
+                                els.loading.style.display = 'none';
+                                els.container.innerHTML = '<div style="color:#ef4444; font-family:\'Space Mono\',monospace; text-align:center;">Could not render architecture diagram.</div>';
+                            }
+                        });
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                var els = getEls();
+                if (e.key === 'Escape' && els.modal && els.modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            function extractMermaidFromMd(md) {
+                var archHeaderRegex = /##.*(?:Architecture|Workflow|Flow).*/i;
+                var match = archHeaderRegex.exec(md);
+                if (!match) return null;
+
+                var subContent = md.substring(match.index);
+                var mermaidRegex = /```mermaid\s*\n([\s\S]*?)\n```/i;
+                var mermaidMatch = mermaidRegex.exec(subContent);
+                return mermaidMatch ? mermaidMatch[1].trim() : null;
+            }
+
+            function prepareSvgElement(els) {
+                var svg = els.container ? els.container.querySelector('svg') : null;
+                if (svg) {
+                    svg.removeAttribute('style');
+                    svg.removeAttribute('width');
+                    svg.removeAttribute('height');
+                    svg.style.width = '100%';
+                    svg.style.height = 'auto';
+                    svg.style.minWidth = '750px';
+                    svg.style.transformOrigin = 'center top';
+                    svg.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+                    applyZoom();
+                }
+            }
+
+            function renderDiagram(code, els) {
+                var uniqueId = 'mermaid-svg-' + Math.floor(Math.random() * 100000);
+                if (els.loading) els.loading.style.display = 'none';
+
+                if (typeof mermaid !== 'undefined' && mermaid.render) {
+                    try {
+                        var p = mermaid.render(uniqueId, code);
+                        if (p && typeof p.then === 'function') {
+                            p.then(function (result) {
+                                els.container.innerHTML = result.svg;
+                                prepareSvgElement(els);
+                            }).catch(function (err) {
+                                console.error('Mermaid render error:', err);
+                                els.container.innerHTML = '<pre style="color:#a5b4fc; background:rgba(0,0,0,0.4); padding:1.2rem; border-radius:12px; font-family:\'Space Mono\',monospace; max-width:100%; overflow:auto; border:1px solid rgba(99,102,241,0.2);">' + code + '</pre>';
+                            });
+                        } else if (p && p.svg) {
+                            els.container.innerHTML = p.svg;
+                            prepareSvgElement(els);
+                        }
+                    } catch (err) {
+                        console.error('Mermaid exception:', err);
+                        els.container.innerHTML = '<pre style="color:#a5b4fc; background:rgba(0,0,0,0.4); padding:1.2rem; border-radius:12px; font-family:\'Space Mono\',monospace; max-width:100%; overflow:auto; border:1px solid rgba(99,102,241,0.2);">' + code + '</pre>';
+                    }
+                } else {
+                    els.container.innerHTML = '<pre style="color:#a5b4fc; background:rgba(0,0,0,0.4); padding:1.2rem; border-radius:12px; font-family:\'Space Mono\',monospace; max-width:100%; overflow:auto; border:1px solid rgba(99,102,241,0.2);">' + code + '</pre>';
+                }
+            }
         })();
     </script>
 </body>
