@@ -216,6 +216,117 @@ nav.scrolled {
     animation: blink 2s infinite;
 }
 
+/* ═══════════════ NAV AUDIO PLAYER PILL ═══════════════ */
+.nav-audio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.42rem 1.05rem;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    border-radius: 100px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(216, 180, 254, 0.75);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 10;
+}
+
+.nav-audio-btn:hover {
+    background: rgba(168, 85, 247, 0.18);
+    border-color: #c084fc;
+    color: #f3e8ff;
+    box-shadow: 0 0 16px rgba(192, 132, 252, 0.3);
+    transform: translateY(-1px);
+}
+
+.nav-audio-btn.playing {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(236, 72, 153, 0.25));
+    border-color: #c084fc;
+    color: #e879f9;
+    box-shadow: 0 0 22px rgba(192, 132, 252, 0.45);
+}
+
+.sound-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2.5px;
+    height: 12px;
+    width: 14px;
+}
+
+.sound-bars .bar {
+    width: 3px;
+    height: 35%;
+    background: rgba(216, 180, 254, 0.6);
+    border-radius: 2px;
+    transition: background 0.3s ease, height 0.3s ease;
+}
+
+.nav-audio-btn.playing .sound-bars .bar {
+    background: #e879f9;
+    animation: soundWave 1.2s ease-in-out infinite alternate;
+}
+
+.nav-audio-btn.playing .sound-bars .bar:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.nav-audio-btn.playing .sound-bars .bar:nth-child(2) {
+    animation-delay: 0.35s;
+}
+
+.nav-audio-btn.playing .sound-bars .bar:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes soundWave {
+    0% {
+        height: 25%;
+    }
+    50% {
+        height: 100%;
+    }
+    100% {
+        height: 45%;
+    }
+}
+
+/* ═══════════════ PHOTO STATUS BADGE ═══════════════ */
+.photo-status-badge {
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.4rem 1.1rem;
+    background: rgba(12, 12, 18, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    border-radius: 100px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(99, 102, 241, 0.2);
+    transition: all 0.3s ease;
+}
+
+.photo-status-badge:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7), 0 0 22px rgba(34, 211, 238, 0.35);
+}
+
+
 .nav-right-group {
     display: flex;
     align-items: center;
@@ -860,7 +971,9 @@ nav.scrolled {
 }
 
 .word {
-    transition: opacity 0.4s ease;
+    display: inline-block;
+    transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, color;
 }
 
 .scramble-char {

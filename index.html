@@ -23,6 +23,7 @@
     <div id="cursor-glow"></div>
     <canvas id="particle-canvas"></canvas>
     <div class="noise"></div>
+    <audio id="bg-audio" loop src="ambient-bg.mp3" preload="auto"></audio>
 
     <div id="preloader">
         <div class="pre-inner">
@@ -55,10 +56,11 @@
                 </svg>
                 <span>Quick Resume</span>
             </button>
-            <div class="nav-status">
-                <span class="status-dot"></span>
-                <span>Available for work</span>
-            </div>
+            <button class="nav-audio-btn" id="nav-audio-btn" title="Toggle Ambient Music">
+                <div class="sound-bars"><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+                <span id="audio-btn-text">Audio</span>
+            </button>
         </div>
     </nav>
 
@@ -87,8 +89,8 @@
                         alt="Uday Raj Kashyap">
                 </div>
                 <div class="photo-status-badge">
-                    <span class="badge-dot"></span>
-                    <span>Noida, India</span>
+                    <span class="status-dot"></span>
+                    <span>Available for work</span>
                 </div>
             </div>
         </div>
@@ -120,24 +122,24 @@
             </div>
             <div class="about-stats">
                 <div class="stat-block">
-                    <div class="stat-num" data-count="850">0</div>
+                    <div class="stat-num" id="stat-lc-solved" data-count="928">0</div>
                     <div class="stat-lbl">LeetCode Solved</div>
                 </div>
                 <div class="stat-block">
-                    <div class="stat-num" data-count="1860">0</div>
+                    <div class="stat-num" id="stat-lc-rating" data-count="1876">0</div>
                     <div class="stat-lbl">Peak LC Rating</div>
                 </div>
                 <div class="stat-block">
-                    <div class="stat-num" data-count="4">0</div>
+                    <div class="stat-num" data-count="5">0</div>
                     <div class="stat-lbl">Certifications</div>
                 </div>
                 <div class="stat-block">
-                    <div class="stat-num" data-count="1460">0</div>
+                    <div class="stat-num" id="stat-cc-rating" data-count="1460">0</div>
                     <div class="stat-lbl">CodeChef Rating</div>
                 </div>
             </div>
 
-            
+
             <div class="leetcode-box-wrap gs-reveal" id="leetcode-box">
                 <div class="lc-header-row">
                     <div class="lc-title-group">
@@ -148,12 +150,11 @@
                             </svg>
                             <span>LEETCODE CONTEST PROGRESS &amp; RATING GRAPH</span>
                         </div>
-                        <h3 class="lc-subtitle">Contest Rating Trajectory: <span class="lc-rating-highlight">1460 ➔
-                                1863</span> (Top 7%)</h3>
+                        <h3 class="lc-subtitle">Contest Rating Trajectory: <span class="lc-rating-highlight" id="lc-subtitle-rating">-- ➔ --</span> (<span id="lc-subtitle-top">--%</span>)</h3>
                     </div>
                     <div class="lc-controls">
                         <div class="lc-filter-group">
-                            <button class="lc-btn active" data-filter="all">All (30)</button>
+                            <button class="lc-btn active" data-filter="all" id="lc-filter-all-btn">All (--)</button>
                             <button class="lc-btn" data-filter="peak">Peak Surge</button>
                             <button class="lc-btn" data-filter="recent">Recent 10</button>
                         </div>
@@ -182,29 +183,30 @@
                     <div class="lc-stat-pill">
                         <span class="pill-dot green"></span>
                         <span class="pill-title">Contests Attended:</span>
-                        <span class="pill-val">30</span>
+                        <span class="pill-val" id="lc-meta-attended">--</span>
                     </div>
                     <div class="lc-stat-pill">
                         <span class="pill-dot cyan"></span>
                         <span class="pill-title">Peak Rating:</span>
-                        <span class="pill-val">1863.57 (Knight / Top 7.01%)</span>
+                        <span class="pill-val" id="lc-meta-peak">--</span>
                     </div>
                     <div class="lc-stat-pill">
                         <span class="pill-dot indigo"></span>
                         <span class="pill-title">Global Rank:</span>
-                        <span class="pill-val">#60,217</span>
+                        <span class="pill-val" id="lc-meta-rank">--</span>
                     </div>
                 </div>
 
-                
+
                 <div class="lc-heatmap-section">
                     <div class="lc-heatmap-header">
                         <div class="lc-heatmap-title-row">
                             <svg class="lc-icon" viewBox="0 0 24 24" width="14" height="14">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="#FFA116" stroke-width="2"/>
-                                <line x1="16" y1="2" x2="16" y2="6" stroke="#FFA116" stroke-width="2"/>
-                                <line x1="8" y1="2" x2="8" y2="6" stroke="#FFA116" stroke-width="2"/>
-                                <line x1="3" y1="10" x2="21" y2="10" stroke="#FFA116" stroke-width="2"/>
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="#FFA116"
+                                    stroke-width="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" stroke="#FFA116" stroke-width="2" />
+                                <line x1="8" y1="2" x2="8" y2="6" stroke="#FFA116" stroke-width="2" />
+                                <line x1="3" y1="10" x2="21" y2="10" stroke="#FFA116" stroke-width="2" />
                             </svg>
                             <span class="lc-heatmap-label">SUBMISSION ACTIVITY HEATMAP</span>
                             <span class="lc-heatmap-live-badge" id="lc-heatmap-badge">● LIVE</span>
@@ -656,6 +658,169 @@
     </footer>
 
     <script>
+        // ═══════════════ AMBIENT AUDIO ENGINE ═══════════════
+        window.AmbientAudioEngine = (function () {
+            var audioCtx = null;
+            var isPlaying = false;
+            var masterGain = null;
+            var htmlAudio = null;
+
+            function updateUI(active) {
+                var btn = document.getElementById('nav-audio-btn');
+                var btnText = document.getElementById('audio-btn-text');
+                if (!btn) return;
+                if (active) {
+                    btn.classList.add('playing');
+                    if (btnText) btnText.textContent = 'Sound: On';
+                } else {
+                    btn.classList.remove('playing');
+                    if (btnText) btnText.textContent = 'Audio';
+                }
+            }
+
+            function playSynth() {
+                try {
+                    var AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    if (!audioCtx) {
+                        audioCtx = new AudioCtx();
+                        masterGain = audioCtx.createGain();
+                        masterGain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+
+                        var filter = audioCtx.createBiquadFilter();
+                        filter.type = 'lowpass';
+                        filter.frequency.setValueAtTime(420, audioCtx.currentTime);
+
+                        masterGain.connect(filter);
+                        filter.connect(audioCtx.destination);
+
+                        var freqs = [130.81, 196.00, 246.94, 293.66, 329.63];
+                        freqs.forEach(function (f) {
+                            var osc = audioCtx.createOscillator();
+                            var oscGain = audioCtx.createGain();
+                            osc.type = 'sine';
+                            osc.frequency.setValueAtTime(f, audioCtx.currentTime);
+                            osc.detune.setValueAtTime((Math.random() - 0.5) * 12, audioCtx.currentTime);
+                            oscGain.gain.setValueAtTime(0.07, audioCtx.currentTime);
+                            osc.connect(oscGain);
+                            oscGain.connect(masterGain);
+                            osc.start();
+                        });
+                    }
+
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume().then(function () {
+                            masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+                            masterGain.gain.linearRampToValueAtTime(0.22, audioCtx.currentTime + 0.8);
+                            isPlaying = true;
+                            updateUI(true);
+                        }).catch(function () {
+                            isPlaying = false;
+                            updateUI(false);
+                        });
+                    } else {
+                        masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+                        masterGain.gain.linearRampToValueAtTime(0.22, audioCtx.currentTime + 0.8);
+                        isPlaying = true;
+                        updateUI(true);
+                    }
+                } catch (e) {
+                    isPlaying = false;
+                    updateUI(false);
+                }
+            }
+
+            function play() {
+                htmlAudio = document.getElementById('bg-audio');
+                if (htmlAudio) {
+                    htmlAudio.volume = 0.4;
+                    var p = htmlAudio.play();
+                    if (p && typeof p.then === 'function') {
+                        p.then(function () {
+                            isPlaying = true;
+                            updateUI(true);
+                        }).catch(function (err) {
+                            console.log('Autoplay blocked by browser, attempting synth or gesture unlock:', err);
+                            isPlaying = false;
+                            updateUI(false);
+                            playSynth();
+                        });
+                        return;
+                    }
+                }
+                playSynth();
+            }
+
+            function stop() {
+                if (htmlAudio && !htmlAudio.paused) {
+                    htmlAudio.pause();
+                }
+                if (audioCtx && masterGain) {
+                    masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+                    masterGain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.4);
+                }
+                isPlaying = false;
+                updateUI(false);
+            }
+
+            function toggle() {
+                if (isPlaying) {
+                    stop();
+                } else {
+                    play();
+                }
+            }
+
+            function setupUnlockListener() {
+                htmlAudio = document.getElementById('bg-audio');
+                var events = ['pointerdown', 'mousedown', 'click', 'touchstart', 'keydown'];
+                var unlock = function () {
+                    if (!isPlaying) {
+                        play();
+                    }
+                    events.forEach(function (evt) {
+                        window.removeEventListener(evt, unlock);
+                    });
+                };
+                events.forEach(function (evt) {
+                    window.addEventListener(evt, unlock, { passive: true });
+                });
+            }
+
+            function initEvents() {
+                var preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.addEventListener('pointerdown', function () {
+                        play();
+                    }, { once: true });
+                }
+                var btn = document.getElementById('nav-audio-btn');
+                if (btn) {
+                    btn.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        toggle();
+                    });
+                }
+                setupUnlockListener();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initEvents);
+            } else {
+                setTimeout(initEvents, 10);
+            }
+
+            return {
+                play: play,
+                stop: stop,
+                toggle: toggle,
+                isPlaying: function () { return isPlaying; }
+            };
+        })();
+
+        window.startAmbientAudio = function () {
+            window.AmbientAudioEngine.play();
+        };
+
         (function () {
             'use strict';
             gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -685,7 +850,7 @@
 
             const pl = document.getElementById('preloader'), pn = document.getElementById('pre-num'), pf = document.getElementById('pre-fill');
             let pg = { v: 0 };
-            gsap.to(pg, { v: 100, duration: 2, ease: 'power2.inOut', onUpdate: function () { const v = Math.round(pg.v); pn.textContent = v; pf.style.width = v + '%'; }, onComplete: function () { gsap.timeline().to('.pre-inner', { y: -30, opacity: 0, duration: 0.35, ease: 'power2.in' }).to(pl, { yPercent: -100, duration: 0.75, ease: 'power4.inOut', onComplete: function () { pl.style.display = 'none'; document.body.classList.add('loaded'); heroEntrance(); setTimeout(() => ScrollTrigger.refresh(), 100); } }, '-=0.1'); } });
+            gsap.to(pg, { v: 100, duration: 2, ease: 'power2.inOut', onUpdate: function () { const v = Math.round(pg.v); pn.textContent = v; pf.style.width = v + '%'; }, onComplete: function () { gsap.timeline().to('.pre-inner', { y: -30, opacity: 0, duration: 0.35, ease: 'power2.in' }).to(pl, { yPercent: -100, duration: 0.75, ease: 'power4.inOut', onStart: function () { if (window.startAmbientAudio) window.startAmbientAudio(); }, onComplete: function () { pl.style.display = 'none'; document.body.classList.add('loaded'); heroEntrance(); if (window.startAmbientAudio) window.startAmbientAudio(); setTimeout(() => ScrollTrigger.refresh(), 100); } }, '-=0.1'); } });
             window.addEventListener('load', function () { setTimeout(() => ScrollTrigger.refresh(), 200); });
 
             class TextScramble {
@@ -726,10 +891,30 @@
             document.querySelectorAll('a[href^="#"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); var t = document.querySelector(a.getAttribute('href')); if (t) gsap.to(window, { duration: 0.35, scrollTo: { y: t, offsetY: 60 }, ease: 'power2.out' }); }); });
 
             var aboutEl = document.getElementById('about-text');
-            var wds = aboutEl.textContent.trim().split(/\s+/);
-            aboutEl.innerHTML = wds.map(function (w) { return '<span class="word">' + w + '</span>'; }).join(' ');
-            gsap.set('.word', { opacity: 0.1 });
-            gsap.to('.word', { opacity: 1, stagger: 0.04, scrollTrigger: { trigger: '#about', start: 'top 70%', end: 'bottom 60%', scrub: 1 } });
+            if (aboutEl) {
+                var wds = aboutEl.textContent.trim().split(/\s+/);
+                aboutEl.innerHTML = wds.map(function (w) { return '<span class="word">' + w + '</span>'; }).join(' ');
+                var words = aboutEl.querySelectorAll('.word');
+                gsap.set(words, { opacity: 0.15, color: 'rgba(255, 255, 255, 0.18)' });
+
+                var tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '#about-text',
+                        start: 'top 80%',
+                        end: 'bottom 45%',
+                        scrub: 0.5
+                    }
+                });
+
+                words.forEach(function (word, i) {
+                    tl.to(word, {
+                        opacity: 1,
+                        color: '#ffffff',
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    }, i * 0.04);
+                });
+            }
 
             gsap.utils.toArray('.stat-num').forEach(function (el) { var target = parseInt(el.dataset.count, 10); ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true, onEnter: function () { gsap.to({ v: 0 }, { v: target, duration: 2.5, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(this.targets()[0].v) + '+'; } }); } }); });
 
@@ -969,28 +1154,108 @@
                 var currentFilter = 'all';
                 var showingCard = false;
 
+                // Dynamic Live API Data Fetching for LeetCode
+                function updateStatCount(el, targetVal) {
+                    if (!el) return;
+                    el.dataset.count = targetVal;
+                }
+
+                function applyDynamicLeetCodeData(profileData, contestData) {
+                    if (profileData && profileData.totalSolved) {
+                        var solvedEl = document.getElementById('stat-lc-solved');
+                        if (solvedEl) updateStatCount(solvedEl, profileData.totalSolved);
+                    }
+
+                    if (contestData && contestData.contestParticipation && contestData.contestParticipation.length > 0) {
+                        var liveList = contestData.contestParticipation
+                            .filter(function (c) { return c.attended && c.rating; })
+                            .map(function (c) {
+                                return {
+                                    title: c.contest ? c.contest.title : 'Contest',
+                                    rating: Math.round(c.rating * 100) / 100,
+                                    ranking: c.ranking || 0,
+                                    solved: c.problemsSolved || 0,
+                                    total: c.totalProblems || 4
+                                };
+                            });
+
+                        if (liveList.length >= 5) {
+                            rawContests = liveList;
+
+                            var maxRating = 0;
+                            var startRating = liveList[0].rating;
+                            liveList.forEach(function (c) {
+                                if (c.rating > maxRating) maxRating = c.rating;
+                            });
+                            var roundedPeak = Math.round(maxRating);
+
+                            var ratingEl = document.getElementById('stat-lc-rating');
+                            if (ratingEl) updateStatCount(ratingEl, roundedPeak);
+
+                            var resumeRatingEl = document.getElementById('resume-lc-rating');
+                            if (resumeRatingEl) resumeRatingEl.textContent = roundedPeak;
+
+                            var attendedEl = document.getElementById('lc-meta-attended');
+                            var filterAllBtn = document.getElementById('lc-filter-all-btn');
+                            var peakMetaEl = document.getElementById('lc-meta-peak');
+                            var subtitleRating = document.getElementById('lc-subtitle-rating');
+                            var subtitleTop = document.getElementById('lc-subtitle-top');
+
+                            var contestCount = contestData.contestAttend || liveList.length;
+                            if (attendedEl) attendedEl.textContent = contestCount;
+                            if (filterAllBtn) filterAllBtn.textContent = 'All (' + contestCount + ')';
+                            if (subtitleRating) subtitleRating.textContent = Math.round(startRating) + ' ➔ ' + roundedPeak;
+
+                            var topPct = contestData.contestTopPercentage || (contestData.userContestRanking && contestData.userContestRanking.topPercentage);
+                            topPct = topPct ? (Math.round(topPct * 100) / 100) : 5.46;
+
+                            var badgeName = (contestData.contestBadges && contestData.contestBadges.name) ||
+                                            (contestData.userContestRanking && contestData.userContestRanking.badge && contestData.userContestRanking.badge.name) ||
+                                            (maxRating >= 1600 ? 'Knight' : 'Coder');
+
+                            if (subtitleTop) subtitleTop.textContent = 'Top ' + topPct + '%';
+                            if (peakMetaEl) peakMetaEl.textContent = maxRating.toFixed(1) + ' (' + badgeName + ' / Top ' + topPct + '%)';
+
+                            var globalRank = contestData.contestGlobalRanking || (contestData.userContestRanking && contestData.userContestRanking.globalRanking) || (profileData && profileData.ranking);
+                            if (globalRank) {
+                                var rankEl = document.getElementById('lc-meta-rank');
+                                if (rankEl) rankEl.textContent = '#' + Number(globalRank).toLocaleString();
+                            }
+
+                            renderChart();
+                        }
+                    } else if (profileData && profileData.ranking) {
+                        var rankEl = document.getElementById('lc-meta-rank');
+                        if (rankEl && (!rankEl.textContent || rankEl.textContent === '--')) {
+                            rankEl.textContent = '#' + Number(profileData.ranking).toLocaleString();
+                        }
+                    }
+                }
+
+                // 1. Fetch User Solved Problems & Profile Data
+                var cachedProfileData = null;
+                var cachedContestData = null;
+
+                fetch('https://leetcode-api-faisalshohag.vercel.app/Uday_25468')
+                    .then(function (res) { return res.json(); })
+                    .then(function (data) {
+                        if (data) {
+                            cachedProfileData = data;
+                            applyDynamicLeetCodeData(cachedProfileData, cachedContestData);
+                        }
+                    })
+                    .catch(function () { });
+
+                // 2. Fetch Live Contest History & Rating Trajectory
                 fetch('https://alfa-leetcode-api.onrender.com/Uday_25468/contest')
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
-                        if (data && data.contestParticipation && data.contestParticipation.length > 0) {
-                            var liveList = data.contestParticipation
-                                .filter(function (c) { return c.attended && c.rating; })
-                                .map(function (c) {
-                                    return {
-                                        title: c.contest ? c.contest.title : 'Contest',
-                                        rating: Math.round(c.rating * 100) / 100,
-                                        ranking: c.ranking || 0,
-                                        solved: c.problemsSolved || 0,
-                                        total: c.totalProblems || 4
-                                    };
-                                });
-                            if (liveList.length >= 10) {
-                                rawContests = liveList;
-                                renderChart();
-                            }
+                        if (data && data.contestParticipation) {
+                            cachedContestData = data;
+                            applyDynamicLeetCodeData(cachedProfileData, cachedContestData);
                         }
                     })
-                    .catch(function () {  });
+                    .catch(function () { });
 
                 toggleCardBtn.addEventListener('click', function () {
                     showingCard = !showingCard;
@@ -1225,9 +1490,9 @@
                 var WEEKS = 52;
                 var CELL_SIZE = 13;
                 var CELL_GAP = 3;
-                var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-                var FALLBACK_CALENDAR = {"1757548800":5,"1757635200":7,"1757721600":10,"1757808000":3,"1757894400":8,"1757980800":6,"1758067200":2,"1758153600":2,"1758240000":1,"1758326400":1,"1758412800":4,"1758499200":8,"1758585600":6,"1758672000":8,"1758758400":2,"1758844800":1,"1758931200":1,"1759017600":1,"1759104000":3,"1759190400":1,"1759276800":1,"1759363200":6,"1759449600":2,"1759536000":8,"1759622400":17,"1759708800":6,"1759795200":2,"1759881600":5,"1759968000":4,"1760054400":4,"1760140800":3,"1760227200":1,"1760313600":3,"1760400000":1,"1760486400":3,"1760572800":3,"1760659200":4,"1760745600":4,"1760832000":3,"1760918400":5,"1761004800":1,"1761091200":4,"1761177600":10,"1761264000":4,"1761350400":22,"1761436800":6,"1761523200":9,"1761609600":7,"1761696000":10,"1761782400":9,"1761868800":6,"1761955200":25,"1762041600":3,"1762128000":4,"1762214400":25,"1762300800":4,"1762387200":2,"1762473600":2,"1762560000":4,"1762646400":5,"1762732800":5,"1762819200":3,"1762905600":1,"1762992000":5,"1763078400":4,"1763164800":1,"1763251200":7,"1763337600":7,"1763424000":8,"1763510400":3,"1763596800":4,"1763683200":3,"1763769600":9,"1763856000":9,"1763942400":8,"1764028800":9,"1764115200":8,"1764201600":7,"1764288000":5,"1764374400":6,"1764460800":4,"1764547200":1,"1764633600":1,"1764720000":2,"1764806400":3,"1764892800":2,"1764979200":14,"1765065600":28,"1765152000":17,"1765238400":10,"1765324800":10,"1765411200":18,"1765497600":12,"1765584000":4,"1765670400":2,"1765756800":1,"1765843200":3,"1766016000":5,"1766102400":2,"1766188800":5,"1766275200":8,"1766361600":7,"1766448000":6,"1766534400":11,"1766620800":10,"1766707200":8,"1766793600":2,"1766880000":9,"1766966400":7,"1767052800":1,"1767139200":1,"1767225600":1,"1767312000":2,"1767398400":17,"1767484800":4,"1767571200":4,"1767657600":4,"1767830400":1,"1767916800":1,"1768003200":7,"1768089600":3,"1768176000":3,"1768262400":5,"1768348800":4,"1768435200":10,"1768521600":5,"1768608000":4,"1768694400":10,"1768780800":6,"1768867200":4,"1768953600":4,"1769040000":7,"1769126400":8,"1769212800":8,"1769299200":15,"1769385600":10,"1769472000":7,"1769558400":3,"1769644800":6,"1769731200":8,"1769817600":19,"1769904000":10,"1769990400":3,"1770076800":5,"1770163200":7,"1770249600":4,"1770336000":9,"1770422400":6,"1770508800":10,"1770595200":10,"1770681600":1,"1770768000":4,"1770854400":1,"1770940800":6,"1771027200":13,"1771113600":4,"1771200000":3,"1771286400":3,"1771372800":4,"1771459200":2,"1771545600":2,"1771632000":1,"1771718400":4,"1771804800":5,"1771891200":3,"1771977600":3,"1772064000":2,"1772150400":1,"1772236800":9,"1772323200":8,"1772409600":1,"1772496000":8,"1772582400":6,"1772668800":10,"1772755200":6,"1772841600":8,"1772928000":13,"1773014400":7,"1773100800":5,"1773187200":2,"1773360000":4,"1773446400":4,"1773532800":6,"1773619200":5,"1773878400":1,"1774137600":6,"1774310400":8,"1774396800":4,"1774483200":2,"1774569600":11,"1774656000":2,"1774742400":10,"1774828800":1,"1775001600":2,"1775088000":4,"1775260800":1,"1775347200":6,"1775433600":3,"1775520000":3,"1775606400":3,"1775779200":1,"1775952000":3,"1776038400":1,"1776124800":2,"1776211200":1,"1776297600":2,"1776384000":1,"1776470400":1,"1776556800":3,"1776643200":1,"1776816000":1,"1776902400":3,"1776988800":2,"1777075200":3,"1777161600":6,"1777248000":7,"1777334400":2,"1777420800":1,"1777507200":4,"1777593600":2,"1777680000":2,"1777766400":5,"1777852800":1,"1777939200":10,"1778025600":3,"1778284800":1,"1778371200":2,"1778457600":5,"1778544000":2,"1778630400":2,"1778716800":3,"1778803200":2,"1778976000":14,"1779062400":2,"1779148800":1,"1779235200":1,"1779321600":1,"1779408000":8,"1779494400":1,"1779580800":4,"1779926400":5,"1780012800":2,"1780099200":1,"1780185600":3,"1780272000":6,"1780358400":11,"1780531200":1,"1780704000":1,"1780876800":3,"1780963200":3,"1781049600":1,"1781136000":19,"1781222400":8,"1781308800":4,"1781395200":12,"1781481600":18,"1781568000":16,"1781654400":11,"1781740800":2,"1781827200":24,"1781913600":6,"1782000000":4,"1782086400":14,"1782172800":6,"1782259200":7,"1782345600":5,"1782432000":9,"1782518400":8,"1782604800":9,"1782691200":11,"1782777600":11,"1782864000":2,"1782950400":7,"1783036800":4,"1783123200":7,"1783209600":5,"1783296000":4,"1783382400":2,"1783468800":2,"1783555200":2,"1783641600":3,"1783728000":1,"1783814400":16,"1783900800":1,"1783987200":1,"1784073600":1,"1784160000":1,"1784332800":2,"1784419200":4,"1784505600":9,"1784592000":5,"1784678400":2,"1784764800":6,"1784851200":1,"1784937600":2,"1785024000":4,"1785110400":1,"1785196800":2,"1785283200":7,"1785369600":9,"1785456000":1,"1785542400":5,"1785628800":7,"1785801600":1,"1785888000":3,"1785974400":3,"1786060800":3,"1786147200":2,"1786233600":6,"1786320000":1,"1786406400":2,"1786492800":2,"1786579200":1,"1786665600":6,"1786752000":2,"1786838400":1,"1786924800":1,"1787011200":3,"1787097600":1,"1787184000":1,"1787270400":2,"1787356800":10,"1787443200":3,"1787529600":4,"1787616000":10,"1787702400":4,"1787788800":2,"1787875200":5,"1787961600":12,"1788048000":11,"1788134400":3,"1788220800":3,"1788307200":1,"1788393600":10,"1788480000":5,"1788652800":9,"1788739200":3,"1788825600":9,"1788912000":1,"1788998400":1};
+                var FALLBACK_CALENDAR = { "1757548800": 5, "1757635200": 7, "1757721600": 10, "1757808000": 3, "1757894400": 8, "1757980800": 6, "1758067200": 2, "1758153600": 2, "1758240000": 1, "1758326400": 1, "1758412800": 4, "1758499200": 8, "1758585600": 6, "1758672000": 8, "1758758400": 2, "1758844800": 1, "1758931200": 1, "1759017600": 1, "1759104000": 3, "1759190400": 1, "1759276800": 1, "1759363200": 6, "1759449600": 2, "1759536000": 8, "1759622400": 17, "1759708800": 6, "1759795200": 2, "1759881600": 5, "1759968000": 4, "1760054400": 4, "1760140800": 3, "1760227200": 1, "1760313600": 3, "1760400000": 1, "1760486400": 3, "1760572800": 3, "1760659200": 4, "1760745600": 4, "1760832000": 3, "1760918400": 5, "1761004800": 1, "1761091200": 4, "1761177600": 10, "1761264000": 4, "1761350400": 22, "1761436800": 6, "1761523200": 9, "1761609600": 7, "1761696000": 10, "1761782400": 9, "1761868800": 6, "1761955200": 25, "1762041600": 3, "1762128000": 4, "1762214400": 25, "1762300800": 4, "1762387200": 2, "1762473600": 2, "1762560000": 4, "1762646400": 5, "1762732800": 5, "1762819200": 3, "1762905600": 1, "1762992000": 5, "1763078400": 4, "1763164800": 1, "1763251200": 7, "1763337600": 7, "1763424000": 8, "1763510400": 3, "1763596800": 4, "1763683200": 3, "1763769600": 9, "1763856000": 9, "1763942400": 8, "1764028800": 9, "1764115200": 8, "1764201600": 7, "1764288000": 5, "1764374400": 6, "1764460800": 4, "1764547200": 1, "1764633600": 1, "1764720000": 2, "1764806400": 3, "1764892800": 2, "1764979200": 14, "1765065600": 28, "1765152000": 17, "1765238400": 10, "1765324800": 10, "1765411200": 18, "1765497600": 12, "1765584000": 4, "1765670400": 2, "1765756800": 1, "1765843200": 3, "1766016000": 5, "1766102400": 2, "1766188800": 5, "1766275200": 8, "1766361600": 7, "1766448000": 6, "1766534400": 11, "1766620800": 10, "1766707200": 8, "1766793600": 2, "1766880000": 9, "1766966400": 7, "1767052800": 1, "1767139200": 1, "1767225600": 1, "1767312000": 2, "1767398400": 17, "1767484800": 4, "1767571200": 4, "1767657600": 4, "1767830400": 1, "1767916800": 1, "1768003200": 7, "1768089600": 3, "1768176000": 3, "1768262400": 5, "1768348800": 4, "1768435200": 10, "1768521600": 5, "1768608000": 4, "1768694400": 10, "1768780800": 6, "1768867200": 4, "1768953600": 4, "1769040000": 7, "1769126400": 8, "1769212800": 8, "1769299200": 15, "1769385600": 10, "1769472000": 7, "1769558400": 3, "1769644800": 6, "1769731200": 8, "1769817600": 19, "1769904000": 10, "1769990400": 3, "1770076800": 5, "1770163200": 7, "1770249600": 4, "1770336000": 9, "1770422400": 6, "1770508800": 10, "1770595200": 10, "1770681600": 1, "1770768000": 4, "1770854400": 1, "1770940800": 6, "1771027200": 13, "1771113600": 4, "1771200000": 3, "1771286400": 3, "1771372800": 4, "1771459200": 2, "1771545600": 2, "1771632000": 1, "1771718400": 4, "1771804800": 5, "1771891200": 3, "1771977600": 3, "1772064000": 2, "1772150400": 1, "1772236800": 9, "1772323200": 8, "1772409600": 1, "1772496000": 8, "1772582400": 6, "1772668800": 10, "1772755200": 6, "1772841600": 8, "1772928000": 13, "1773014400": 7, "1773100800": 5, "1773187200": 2, "1773360000": 4, "1773446400": 4, "1773532800": 6, "1773619200": 5, "1773878400": 1, "1774137600": 6, "1774310400": 8, "1774396800": 4, "1774483200": 2, "1774569600": 11, "1774656000": 2, "1774742400": 10, "1774828800": 1, "1775001600": 2, "1775088000": 4, "1775260800": 1, "1775347200": 6, "1775433600": 3, "1775520000": 3, "1775606400": 3, "1775779200": 1, "1775952000": 3, "1776038400": 1, "1776124800": 2, "1776211200": 1, "1776297600": 2, "1776384000": 1, "1776470400": 1, "1776556800": 3, "1776643200": 1, "1776816000": 1, "1776902400": 3, "1776988800": 2, "1777075200": 3, "1777161600": 6, "1777248000": 7, "1777334400": 2, "1777420800": 1, "1777507200": 4, "1777593600": 2, "1777680000": 2, "1777766400": 5, "1777852800": 1, "1777939200": 10, "1778025600": 3, "1778284800": 1, "1778371200": 2, "1778457600": 5, "1778544000": 2, "1778630400": 2, "1778716800": 3, "1778803200": 2, "1778976000": 14, "1779062400": 2, "1779148800": 1, "1779235200": 1, "1779321600": 1, "1779408000": 8, "1779494400": 1, "1779580800": 4, "1779926400": 5, "1780012800": 2, "1780099200": 1, "1780185600": 3, "1780272000": 6, "1780358400": 11, "1780531200": 1, "1780704000": 1, "1780876800": 3, "1780963200": 3, "1781049600": 1, "1781136000": 19, "1781222400": 8, "1781308800": 4, "1781395200": 12, "1781481600": 18, "1781568000": 16, "1781654400": 11, "1781740800": 2, "1781827200": 24, "1781913600": 6, "1782000000": 4, "1782086400": 14, "1782172800": 6, "1782259200": 7, "1782345600": 5, "1782432000": 9, "1782518400": 8, "1782604800": 9, "1782691200": 11, "1782777600": 11, "1782864000": 2, "1782950400": 7, "1783036800": 4, "1783123200": 7, "1783209600": 5, "1783296000": 4, "1783382400": 2, "1783468800": 2, "1783555200": 2, "1783641600": 3, "1783728000": 1, "1783814400": 16, "1783900800": 1, "1783987200": 1, "1784073600": 1, "1784160000": 1, "1784332800": 2, "1784419200": 4, "1784505600": 9, "1784592000": 5, "1784678400": 2, "1784764800": 6, "1784851200": 1, "1784937600": 2, "1785024000": 4, "1785110400": 1, "1785196800": 2, "1785283200": 7, "1785369600": 9, "1785456000": 1, "1785542400": 5, "1785628800": 7, "1785801600": 1, "1785888000": 3, "1785974400": 3, "1786060800": 3, "1786147200": 2, "1786233600": 6, "1786320000": 1, "1786406400": 2, "1786492800": 2, "1786579200": 1, "1786665600": 6, "1786752000": 2, "1786838400": 1, "1786924800": 1, "1787011200": 3, "1787097600": 1, "1787184000": 1, "1787270400": 2, "1787356800": 10, "1787443200": 3, "1787529600": 4, "1787616000": 10, "1787702400": 4, "1787788800": 2, "1787875200": 5, "1787961600": 12, "1788048000": 11, "1788134400": 3, "1788220800": 3, "1788307200": 1, "1788393600": 10, "1788480000": 5, "1788652800": 9, "1788739200": 3, "1788825600": 9, "1788912000": 1, "1788998400": 1 };
 
                 var grid = document.getElementById('lc-heatmap-grid');
                 var monthsEl = document.getElementById('lc-heatmap-months');
@@ -1311,8 +1576,8 @@
 
                             cell.style.opacity = '0';
                             cell.style.transform = 'scale(0.6)';
-                            (function(c, delay) {
-                                setTimeout(function() {
+                            (function (c, delay) {
+                                setTimeout(function () {
                                     c.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
                                     c.style.opacity = '1';
                                     c.style.transform = 'scale(1)';
@@ -1343,8 +1608,8 @@
                     monthsEl.innerHTML = '';
                     monthsEl.style.position = 'relative';
                     monthsEl.style.height = '14px';
-                    monthPositions.forEach(function(mp, i) {
-                        if (i > 0 && mp.week - monthPositions[i-1].week < 4) return;
+                    monthPositions.forEach(function (mp, i) {
+                        if (i > 0 && mp.week - monthPositions[i - 1].week < 4) return;
                         var lbl = document.createElement('span');
                         lbl.className = 'lc-heatmap-month-label';
                         lbl.textContent = MONTHS[mp.month];
@@ -1380,7 +1645,7 @@
                     var calMap = null;
                     try {
                         calMap = typeof calStr === 'string' ? JSON.parse(calStr) : calStr;
-                    } catch(e) { calMap = null; }
+                    } catch (e) { calMap = null; }
                     return (calMap && Object.keys(calMap).length > 0) ? calMap : null;
                 }
 
@@ -1392,21 +1657,21 @@
 
                 function fetchWithTimeout(url, timeoutMs) {
                     var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-                    var id = controller ? setTimeout(function() { controller.abort(); }, timeoutMs) : null;
+                    var id = controller ? setTimeout(function () { controller.abort(); }, timeoutMs) : null;
                     return fetch(url, controller ? { signal: controller.signal } : {})
-                        .then(function(res) {
+                        .then(function (res) {
                             if (id) clearTimeout(id);
                             if (!res.ok) throw new Error('HTTP ' + res.status);
                             return res.json();
                         })
-                        .catch(function(err) {
+                        .catch(function (err) {
                             if (id) clearTimeout(id);
                             throw err;
                         });
                 }
 
                 fetchWithTimeout('https://leetcode-api-faisalshohag.vercel.app/' + LCUSER, 4000)
-                    .then(function(data) {
+                    .then(function (data) {
                         var calMap = parseCal(data);
                         if (calMap) {
                             if (loadingEl) loadingEl.style.display = 'none';
@@ -1416,10 +1681,10 @@
                             throw new Error('Empty data');
                         }
                     })
-                    .catch(function() {
+                    .catch(function () {
 
                         fetchWithTimeout('https://alfa-leetcode-api.onrender.com/' + LCUSER + '/calendar', 3500)
-                            .then(function(data) {
+                            .then(function (data) {
                                 var calMap = parseCal(data);
                                 if (calMap) {
                                     if (loadingEl) loadingEl.style.display = 'none';
@@ -1429,7 +1694,7 @@
                                     useFallback();
                                 }
                             })
-                            .catch(function() {
+                            .catch(function () {
                                 useFallback();
                             });
                     });
@@ -1525,9 +1790,9 @@
                 }
             })();
         })();
-</script>
+    </script>
 
-    
+
     <div id="resume-modal" class="arch-modal-overlay" aria-hidden="true">
         <div class="arch-modal-container resume-modal-container">
             <button id="resume-modal-close" class="arch-modal-close" title="Close modal">&times;</button>
@@ -1568,7 +1833,7 @@
         </div>
     </div>
 
-    
+
     <div id="arch-modal" class="arch-modal-overlay" aria-hidden="true">
         <div class="arch-modal-container">
             <button id="arch-modal-close" class="arch-modal-close" title="Close modal">&times;</button>
@@ -1953,8 +2218,9 @@
                     els.container.innerHTML = '<pre style="color:#a5b4fc; background:rgba(0,0,0,0.4); padding:1.2rem; border-radius:12px; font-family:\'Space Mono\',monospace; max-width:100%; overflow:auto; border:1px solid rgba(99,102,241,0.2);">' + code + '</pre>';
                 }
             }
+
         })();
-</script>
+    </script>
 </body>
 
 </html>
