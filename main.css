@@ -2558,6 +2558,68 @@ footer {
     letter-spacing: 2px;
     color: #ffa116;
     text-transform: uppercase;
+    flex-wrap: wrap;
+}
+
+.lc-sync-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.lc-sync-pill.fetching {
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #fbbf24;
+}
+
+.lc-sync-pill.fetching .lc-sync-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #fbbf24;
+    box-shadow: 0 0 8px #fbbf24;
+    animation: lcSyncPulse 1.2s infinite ease-in-out;
+}
+
+.lc-sync-pill.synced {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    color: #4ade80;
+}
+
+.lc-sync-pill.synced .lc-sync-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+}
+
+.lc-sync-pill.cached {
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    color: #a5b4fc;
+}
+
+.lc-sync-pill.cached .lc-sync-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #a5b4fc;
+}
+
+@keyframes lcSyncPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.65); }
 }
 
 .lc-subtitle {

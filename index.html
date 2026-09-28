@@ -164,6 +164,10 @@
                         <a href="https://leetcode.com/u/Uday_25468/" target="_blank" class="lc-profile-link">
                             LeetCode Profile ↗
                         </a>
+                        <span class="lc-sync-pill fetching" id="lc-sync-pill">
+                            <span class="lc-sync-dot"></span>
+                            <span class="lc-sync-text" id="lc-sync-text">Fetching live data...</span>
+                        </span>
                     </div>
                 </div>
 
@@ -1148,16 +1152,75 @@
                 var chartContainer = document.getElementById('lc-chart-container');
                 var toggleCardBtn = document.getElementById('lc-toggle-card');
                 var filterBtns = document.querySelectorAll('.lc-btn');
+                var syncPill = document.getElementById('lc-sync-pill');
+                var syncText = document.getElementById('lc-sync-text');
 
                 if (!wrap) return;
 
                 var currentFilter = 'all';
                 var showingCard = false;
 
-                // Dynamic Live API Data Fetching for LeetCode
+                function setSyncStatus(status, text) {
+                    if (!syncPill || !syncText) return;
+                    syncPill.className = 'lc-sync-pill ' + status;
+                    syncText.textContent = text;
+                }
+
                 function updateStatCount(el, targetVal) {
                     if (!el) return;
                     el.dataset.count = targetVal;
+                    el.textContent = Number(targetVal).toLocaleString();
+                }
+
+                function applyContestListUI(list, extraContestData, profileData) {
+                    if (!list || list.length === 0) return;
+                    rawContests = list;
+
+                    var startRating = list[0].rating;
+                    var maxRating = 0;
+                    list.forEach(function (c) {
+                        if (c.rating > maxRating) maxRating = c.rating;
+                    });
+                    var roundedPeak = Math.round(maxRating);
+
+                    var ratingEl = document.getElementById('stat-lc-rating');
+                    if (ratingEl) updateStatCount(ratingEl, roundedPeak);
+
+                    var resumeRatingEl = document.getElementById('resume-lc-rating');
+                    if (resumeRatingEl) resumeRatingEl.textContent = roundedPeak;
+
+                    var attendedEl = document.getElementById('lc-meta-attended');
+                    var filterAllBtn = document.getElementById('lc-filter-all-btn');
+                    var peakMetaEl = document.getElementById('lc-meta-peak');
+                    var subtitleRating = document.getElementById('lc-subtitle-rating');
+                    var subtitleTop = document.getElementById('lc-subtitle-top');
+
+                    var contestCount = (extraContestData && extraContestData.contestAttend) ? extraContestData.contestAttend : list.length;
+                    if (attendedEl) attendedEl.textContent = contestCount;
+                    if (filterAllBtn) filterAllBtn.textContent = 'All (' + contestCount + ')';
+                    if (subtitleRating) subtitleRating.textContent = Math.round(startRating) + ' ➔ ' + roundedPeak;
+
+                    var topPct = (extraContestData && extraContestData.contestTopPercentage) ||
+                                 (extraContestData && extraContestData.userContestRanking && extraContestData.userContestRanking.topPercentage);
+                    topPct = topPct ? (Math.round(topPct * 100) / 100) : 5.46;
+
+                    var badgeName = (extraContestData && extraContestData.contestBadges && extraContestData.contestBadges.name) ||
+                                    (extraContestData && extraContestData.userContestRanking && extraContestData.userContestRanking.badge && extraContestData.userContestRanking.badge.name) ||
+                                    (maxRating >= 1600 ? 'Knight' : 'Coder');
+
+                    if (subtitleTop) subtitleTop.textContent = 'Top ' + topPct + '%';
+                    if (peakMetaEl) peakMetaEl.textContent = maxRating.toFixed(1) + ' (' + badgeName + ' / Top ' + topPct + '%)';
+
+                    var globalRank = (extraContestData && extraContestData.contestGlobalRanking) ||
+                                     (extraContestData && extraContestData.userContestRanking && extraContestData.userContestRanking.globalRanking) ||
+                                     (profileData && profileData.ranking) ||
+                                     44029;
+                    if (globalRank) {
+                        var rankEl = document.getElementById('lc-meta-rank');
+                        if (rankEl) rankEl.textContent = '#' + Number(globalRank).toLocaleString();
+                    }
+
+                    renderChart();
                 }
 
                 function applyDynamicLeetCodeData(profileData, contestData) {
@@ -1180,82 +1243,87 @@
                             });
 
                         if (liveList.length >= 5) {
-                            rawContests = liveList;
-
-                            var maxRating = 0;
-                            var startRating = liveList[0].rating;
-                            liveList.forEach(function (c) {
-                                if (c.rating > maxRating) maxRating = c.rating;
-                            });
-                            var roundedPeak = Math.round(maxRating);
-
-                            var ratingEl = document.getElementById('stat-lc-rating');
-                            if (ratingEl) updateStatCount(ratingEl, roundedPeak);
-
-                            var resumeRatingEl = document.getElementById('resume-lc-rating');
-                            if (resumeRatingEl) resumeRatingEl.textContent = roundedPeak;
-
-                            var attendedEl = document.getElementById('lc-meta-attended');
-                            var filterAllBtn = document.getElementById('lc-filter-all-btn');
-                            var peakMetaEl = document.getElementById('lc-meta-peak');
-                            var subtitleRating = document.getElementById('lc-subtitle-rating');
-                            var subtitleTop = document.getElementById('lc-subtitle-top');
-
-                            var contestCount = contestData.contestAttend || liveList.length;
-                            if (attendedEl) attendedEl.textContent = contestCount;
-                            if (filterAllBtn) filterAllBtn.textContent = 'All (' + contestCount + ')';
-                            if (subtitleRating) subtitleRating.textContent = Math.round(startRating) + ' ➔ ' + roundedPeak;
-
-                            var topPct = contestData.contestTopPercentage || (contestData.userContestRanking && contestData.userContestRanking.topPercentage);
-                            topPct = topPct ? (Math.round(topPct * 100) / 100) : 5.46;
-
-                            var badgeName = (contestData.contestBadges && contestData.contestBadges.name) ||
-                                            (contestData.userContestRanking && contestData.userContestRanking.badge && contestData.userContestRanking.badge.name) ||
-                                            (maxRating >= 1600 ? 'Knight' : 'Coder');
-
-                            if (subtitleTop) subtitleTop.textContent = 'Top ' + topPct + '%';
-                            if (peakMetaEl) peakMetaEl.textContent = maxRating.toFixed(1) + ' (' + badgeName + ' / Top ' + topPct + '%)';
-
-                            var globalRank = contestData.contestGlobalRanking || (contestData.userContestRanking && contestData.userContestRanking.globalRanking) || (profileData && profileData.ranking);
-                            if (globalRank) {
-                                var rankEl = document.getElementById('lc-meta-rank');
-                                if (rankEl) rankEl.textContent = '#' + Number(globalRank).toLocaleString();
-                            }
-
-                            renderChart();
+                            applyContestListUI(liveList, contestData, profileData);
                         }
                     } else if (profileData && profileData.ranking) {
                         var rankEl = document.getElementById('lc-meta-rank');
-                        if (rankEl && (!rankEl.textContent || rankEl.textContent === '--')) {
+                        if (rankEl) {
                             rankEl.textContent = '#' + Number(profileData.ranking).toLocaleString();
                         }
                     }
                 }
 
-                // 1. Fetch User Solved Problems & Profile Data
+                // 1. Initial local state from storage or default dataset
                 var cachedProfileData = null;
                 var cachedContestData = null;
 
+                try {
+                    var storedProfile = localStorage.getItem('lc_cached_profile_v2');
+                    var storedContest = localStorage.getItem('lc_cached_contest_v2');
+                    if (storedProfile) cachedProfileData = JSON.parse(storedProfile);
+                    if (storedContest) cachedContestData = JSON.parse(storedContest);
+                } catch (e) {}
+
+                // Immediately populate UI & graph with default or cached dataset
+                applyContestListUI(rawContests, cachedContestData, cachedProfileData);
+                if (cachedProfileData || cachedContestData) {
+                    applyDynamicLeetCodeData(cachedProfileData, cachedContestData);
+                }
+
+                // Display indicator that live fetching is in progress
+                setSyncStatus('fetching', 'Fetching live data...');
+
+                var liveContestFetched = false;
+                var liveProfileFetched = false;
+
+                function updateSyncCompletionStatus() {
+                    if (liveContestFetched || liveProfileFetched) {
+                        setSyncStatus('synced', 'Live Data Synced');
+                    } else {
+                        setSyncStatus('cached', 'Showing Cached Data');
+                    }
+                }
+
+                // 2. Fetch Live User Profile & Solved Problems
                 fetch('https://leetcode-api-faisalshohag.vercel.app/Uday_25468')
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
-                        if (data) {
+                        if (data && data.totalSolved) {
                             cachedProfileData = data;
+                            liveProfileFetched = true;
+                            try { localStorage.setItem('lc_cached_profile_v2', JSON.stringify(data)); } catch (e) {}
                             applyDynamicLeetCodeData(cachedProfileData, cachedContestData);
+                            updateSyncCompletionStatus();
                         }
                     })
-                    .catch(function () { });
+                    .catch(function () {
+                        updateSyncCompletionStatus();
+                    });
 
-                // 2. Fetch Live Contest History & Rating Trajectory
-                fetch('https://alfa-leetcode-api.onrender.com/Uday_25468/contest')
-                    .then(function (res) { return res.json(); })
+                // 3. Fetch Live Contest History & Rating Trajectory (with timeout)
+                var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+                var timeoutId = controller ? setTimeout(function () { controller.abort(); }, 6000) : null;
+
+                fetch('https://alfa-leetcode-api.onrender.com/Uday_25468/contest', controller ? { signal: controller.signal } : {})
+                    .then(function (res) {
+                        if (timeoutId) clearTimeout(timeoutId);
+                        return res.json();
+                    })
                     .then(function (data) {
-                        if (data && data.contestParticipation) {
+                        if (data && data.contestParticipation && data.contestParticipation.length > 0) {
                             cachedContestData = data;
+                            liveContestFetched = true;
+                            try { localStorage.setItem('lc_cached_contest_v2', JSON.stringify(data)); } catch (e) {}
                             applyDynamicLeetCodeData(cachedProfileData, cachedContestData);
+                            setSyncStatus('synced', 'Live Data Synced');
+                        } else {
+                            updateSyncCompletionStatus();
                         }
                     })
-                    .catch(function () { });
+                    .catch(function () {
+                        if (timeoutId) clearTimeout(timeoutId);
+                        updateSyncCompletionStatus();
+                    });
 
                 toggleCardBtn.addEventListener('click', function () {
                     showingCard = !showingCard;
@@ -1624,17 +1692,22 @@
                     }
                 }
 
-                function setBadge(isLive) {
+                function setBadge(state) {
                     if (!badgeEl) return;
-                    if (isLive) {
-                        badgeEl.style.color = '#22c55e';
-                        badgeEl.style.borderColor = 'rgba(34,197,94,0.3)';
-                        badgeEl.style.background = 'rgba(34,197,94,0.08)';
+                    if (state === 'fetching') {
+                        badgeEl.style.color = '#fbbf24';
+                        badgeEl.style.borderColor = 'rgba(245,158,11,0.35)';
+                        badgeEl.style.background = 'rgba(245,158,11,0.12)';
+                        badgeEl.textContent = '● FETCHING...';
+                    } else if (state === true) {
+                        badgeEl.style.color = '#4ade80';
+                        badgeEl.style.borderColor = 'rgba(34,197,94,0.35)';
+                        badgeEl.style.background = 'rgba(34,197,94,0.12)';
                         badgeEl.textContent = '● LIVE';
                     } else {
-                        badgeEl.style.color = '#f59e0b';
-                        badgeEl.style.borderColor = 'rgba(245,158,11,0.3)';
-                        badgeEl.style.background = 'rgba(245,158,11,0.08)';
+                        badgeEl.style.color = '#a5b4fc';
+                        badgeEl.style.borderColor = 'rgba(99,102,241,0.35)';
+                        badgeEl.style.background = 'rgba(99,102,241,0.12)';
                         badgeEl.textContent = '● CACHED';
                     }
                 }
@@ -1670,6 +1743,11 @@
                         });
                 }
 
+                // Immediately render fallback heatmap and show fetching badge
+                if (loadingEl) loadingEl.style.display = 'none';
+                setBadge('fetching');
+                renderHeatmap(FALLBACK_CALENDAR);
+
                 fetchWithTimeout('https://leetcode-api-faisalshohag.vercel.app/' + LCUSER, 4000)
                     .then(function (data) {
                         var calMap = parseCal(data);
@@ -1682,7 +1760,6 @@
                         }
                     })
                     .catch(function () {
-
                         fetchWithTimeout('https://alfa-leetcode-api.onrender.com/' + LCUSER + '/calendar', 3500)
                             .then(function (data) {
                                 var calMap = parseCal(data);
