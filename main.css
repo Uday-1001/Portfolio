@@ -288,9 +288,11 @@ nav.scrolled {
     0% {
         height: 25%;
     }
+
     50% {
         height: 100%;
     }
+
     100% {
         height: 45%;
     }
@@ -1168,6 +1170,19 @@ nav.scrolled {
     box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
 }
 
+.scard-live-link {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.15));
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #34d399;
+}
+
+.scard-live-link:hover {
+    background: linear-gradient(135deg, #10b981, #6366f1);
+    border-color: #10b981;
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
 .scard-actions {
     display: flex;
     align-items: center;
@@ -1405,7 +1420,9 @@ nav.scrolled {
 }
 
 @keyframes arch-spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .arch-diagram-container {
@@ -1423,7 +1440,7 @@ nav.scrolled {
     min-width: 650px !important;
     max-width: none !important;
     height: auto !important;
-    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6));
     transform-origin: center top;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -2148,72 +2165,92 @@ nav.scrolled {
 }
 
 /* 1. GITHUB BRAND ILLUMINATION */
-.social-tile.github .tile-icon { color: #f0f6fc; }
+.social-tile.github .tile-icon {
+    color: #f0f6fc;
+}
+
 .social-tile.github:hover {
     background: rgba(240, 246, 252, 0.08);
     border-color: rgba(240, 246, 252, 0.4);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(240, 246, 252, 0.2), 0 0 20px rgba(255, 255, 255, 0.1);
 }
+
 .social-tile.github:hover .tile-icon {
     background: #24292e;
     color: #ffffff;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
+
 .social-tile.github:active {
     transform: translateY(-1px) scale(0.97);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
 /* 2. LINKEDIN BRAND ILLUMINATION */
-.social-tile.linkedin .tile-icon { color: #0a66c2; }
+.social-tile.linkedin .tile-icon {
+    color: #0a66c2;
+}
+
 .social-tile.linkedin:hover {
     background: rgba(10, 102, 194, 0.12);
     border-color: rgba(10, 102, 194, 0.6);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(10, 102, 194, 0.35), 0 0 20px rgba(10, 102, 194, 0.2);
 }
+
 .social-tile.linkedin:hover .tile-icon {
     background: #0a66c2;
     color: #ffffff;
     box-shadow: 0 0 18px rgba(10, 102, 194, 0.6);
 }
+
 .social-tile.linkedin:active {
     transform: translateY(-1px) scale(0.97);
     box-shadow: 0 0 35px rgba(10, 102, 194, 0.7);
 }
 
 /* 3. LEETCODE BRAND ILLUMINATION */
-.social-tile.leetcode .tile-icon { color: #ffa116; }
+.social-tile.leetcode .tile-icon {
+    color: #ffa116;
+}
+
 .social-tile.leetcode:hover {
     background: rgba(255, 161, 22, 0.12);
     border-color: rgba(255, 161, 22, 0.6);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(255, 161, 22, 0.35), 0 0 20px rgba(255, 161, 22, 0.2);
 }
+
 .social-tile.leetcode:hover .tile-icon {
     background: #ffa116;
     color: #0c0c12;
     box-shadow: 0 0 18px rgba(255, 161, 22, 0.6);
 }
+
 .social-tile.leetcode:active {
     transform: translateY(-1px) scale(0.97);
     box-shadow: 0 0 35px rgba(255, 161, 22, 0.7);
 }
 
 /* 4. RESUME BRAND ILLUMINATION */
-.social-tile.resume .tile-icon { color: #22d3ee; }
+.social-tile.resume .tile-icon {
+    color: #22d3ee;
+}
+
 .social-tile.resume:hover {
     background: rgba(34, 211, 238, 0.12);
     border-color: rgba(34, 211, 238, 0.6);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(34, 211, 238, 0.35), 0 0 20px rgba(34, 211, 238, 0.2);
 }
+
 .social-tile.resume:hover .tile-icon {
     background: #22d3ee;
     color: #0c0c12;
     box-shadow: 0 0 18px rgba(34, 211, 238, 0.6);
 }
+
 .social-tile.resume:active {
     transform: translateY(-1px) scale(0.97);
     box-shadow: 0 0 35px rgba(34, 211, 238, 0.7);
@@ -2618,8 +2655,17 @@ footer {
 }
 
 @keyframes lcSyncPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.35; transform: scale(0.65); }
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.35;
+        transform: scale(0.65);
+    }
 }
 
 .lc-subtitle {
@@ -2791,9 +2837,20 @@ footer {
     border-radius: 50%;
 }
 
-.pill-dot.green { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
-.pill-dot.cyan { background: #22d3ee; box-shadow: 0 0 8px #22d3ee; }
-.pill-dot.indigo { background: #6366f1; box-shadow: 0 0 8px #6366f1; }
+.pill-dot.green {
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+.pill-dot.cyan {
+    background: #22d3ee;
+    box-shadow: 0 0 8px #22d3ee;
+}
+
+.pill-dot.indigo {
+    background: #6366f1;
+    box-shadow: 0 0 8px #6366f1;
+}
 
 .pill-title {
     font-family: 'Space Mono', monospace;
@@ -2890,8 +2947,15 @@ footer {
 }
 
 @keyframes lc-live-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .lc-heatmap-meta {
@@ -2905,14 +2969,15 @@ footer {
     overflow-y: hidden;
     padding-bottom: 0.5rem;
     scrollbar-width: thin;
-    scrollbar-color: rgba(99,102,241,0.3) transparent;
+    scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
 }
 
 .lc-heatmap-scroll-wrap::-webkit-scrollbar {
     height: 4px;
 }
+
 .lc-heatmap-scroll-wrap::-webkit-scrollbar-thumb {
-    background: rgba(99,102,241,0.35);
+    background: rgba(99, 102, 241, 0.35);
     border-radius: 4px;
 }
 
@@ -2997,21 +3062,36 @@ footer {
 }
 
 /* Level 0 — No submissions */
-.lc-heatmap-cell[data-level="0"] { background: rgba(255,255,255,0.06); }
+.lc-heatmap-cell[data-level="0"] {
+    background: rgba(255, 255, 255, 0.06);
+}
+
 /* Level 1 — 1-2 submissions */
-.lc-heatmap-cell[data-level="1"] { background: rgba(255,161,22,0.25); }
+.lc-heatmap-cell[data-level="1"] {
+    background: rgba(255, 161, 22, 0.25);
+}
+
 /* Level 2 — 3-5 submissions */
-.lc-heatmap-cell[data-level="2"] { background: rgba(255,161,22,0.5); }
+.lc-heatmap-cell[data-level="2"] {
+    background: rgba(255, 161, 22, 0.5);
+}
+
 /* Level 3 — 6-9 submissions */
-.lc-heatmap-cell[data-level="3"] { background: rgba(255,161,22,0.75); }
+.lc-heatmap-cell[data-level="3"] {
+    background: rgba(255, 161, 22, 0.75);
+}
+
 /* Level 4 — 10+ submissions */
-.lc-heatmap-cell[data-level="4"] { background: #FFA116; box-shadow: 0 0 6px rgba(255,161,22,0.6); }
+.lc-heatmap-cell[data-level="4"] {
+    background: #FFA116;
+    box-shadow: 0 0 6px rgba(255, 161, 22, 0.6);
+}
 
 /* Tooltip */
 .lc-heatmap-tooltip {
     position: fixed;
-    background: rgba(15,23,42,0.97);
-    border: 1px solid rgba(255,161,22,0.35);
+    background: rgba(15, 23, 42, 0.97);
+    border: 1px solid rgba(255, 161, 22, 0.35);
     border-radius: 8px;
     padding: 8px 12px;
     font-size: 0.72rem;
@@ -3022,7 +3102,7 @@ footer {
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.15s ease;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     line-height: 1.6;
 }
 
@@ -3051,15 +3131,39 @@ footer {
     display: inline-block;
 }
 
-.lc-legend-cell[data-level="0"] { background: rgba(255,255,255,0.06); }
-.lc-legend-cell[data-level="1"] { background: rgba(255,161,22,0.25); }
-.lc-legend-cell[data-level="2"] { background: rgba(255,161,22,0.5); }
-.lc-legend-cell[data-level="3"] { background: rgba(255,161,22,0.75); }
-.lc-legend-cell[data-level="4"] { background: #FFA116; box-shadow: 0 0 5px rgba(255,161,22,0.5); }
+.lc-legend-cell[data-level="0"] {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.lc-legend-cell[data-level="1"] {
+    background: rgba(255, 161, 22, 0.25);
+}
+
+.lc-legend-cell[data-level="2"] {
+    background: rgba(255, 161, 22, 0.5);
+}
+
+.lc-legend-cell[data-level="3"] {
+    background: rgba(255, 161, 22, 0.75);
+}
+
+.lc-legend-cell[data-level="4"] {
+    background: #FFA116;
+    box-shadow: 0 0 5px rgba(255, 161, 22, 0.5);
+}
 
 @media(max-width: 768px) {
-    .lc-heatmap-cell { width: 11px; height: 11px; }
-    .lc-heatmap-days { height: calc(7 * 11px + 6 * 3px); }
-    .lc-legend-cell { width: 11px; height: 11px; }
+    .lc-heatmap-cell {
+        width: 11px;
+        height: 11px;
+    }
+
+    .lc-heatmap-days {
+        height: calc(7 * 11px + 6 * 3px);
+    }
+
+    .lc-legend-cell {
+        width: 11px;
+        height: 11px;
+    }
 }
-
